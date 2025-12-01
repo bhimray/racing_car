@@ -36,7 +36,7 @@ SOURCES = [ 'acados_sim_solver_sfunction_racecar_lap_time_mpc.c ', ...
             'racecar_lap_time_mpc_model/racecar_lap_time_mpc_expl_vde_adj.c ', ...
 ];
 
-INC_PATH = 'C:\Users\rayyu\acados\examples\acados_matlab_octave\..\../include';
+INC_PATH = 'C:\Users\rayyu\acados\interfaces\acados_matlab_octave\..\../include';
 
 INCS = [ ' -I', fullfile(INC_PATH, 'blasfeo', 'include'), ...
          ' -I', fullfile(INC_PATH, 'hpipm', 'include'), ...
@@ -44,7 +44,7 @@ INCS = [ ' -I', fullfile(INC_PATH, 'blasfeo', 'include'), ...
 
 CFLAGS  = ' -O';
 
-LIB_PATH = 'C:\Users\rayyu\acados\examples\acados_matlab_octave\..\../lib';
+LIB_PATH = 'C:\Users\rayyu\acados\interfaces\acados_matlab_octave\..\../lib';
 
 LIBS = '-lacados -lhpipm -lblasfeo';
 
@@ -77,9 +77,9 @@ sfun_sim_input_names = [sfun_sim_input_names; 'x0 [7]'];
 input_note = strcat(input_note, num2str(i_in), ') u, size [2]\n ');
 i_in = i_in + 1;
 sfun_sim_input_names = [sfun_sim_input_names; 'u [2]'];
-input_note = strcat(input_note, num2str(i_in), ') parameters, size [1]\n ');
+input_note = strcat(input_note, num2str(i_in), ') parameters, size [7]\n ');
 i_in = i_in + 1;
-sfun_sim_input_names = [sfun_sim_input_names; 'p [1]'];
+sfun_sim_input_names = [sfun_sim_input_names; 'p [7]'];
 
 
 fprintf(input_note)

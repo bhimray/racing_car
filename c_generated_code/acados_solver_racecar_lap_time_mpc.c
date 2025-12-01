@@ -42,6 +42,7 @@
 #include "racecar_lap_time_mpc_model/racecar_lap_time_mpc_model.h"
 
 
+#include "racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost.h"
 
 
 
@@ -151,15 +152,15 @@ void racecar_lap_time_mpc_acados_create_set_plan(ocp_nlp_plan_t* nlp_solver_plan
     *  plan
     ************************************************/
 
-    nlp_solver_plan->nlp_solver = SQP_RTI;
+    nlp_solver_plan->nlp_solver = SQP;
 
     nlp_solver_plan->ocp_qp_solver_plan.qp_solver = PARTIAL_CONDENSING_HPIPM;
     nlp_solver_plan->relaxed_ocp_qp_solver_plan.qp_solver = PARTIAL_CONDENSING_HPIPM;
-    nlp_solver_plan->nlp_cost[0] = LINEAR_LS;
+    nlp_solver_plan->nlp_cost[0] = EXTERNAL;
     for (int i = 1; i < N; i++)
-        nlp_solver_plan->nlp_cost[i] = LINEAR_LS;
+        nlp_solver_plan->nlp_cost[i] = EXTERNAL;
 
-    nlp_solver_plan->nlp_cost[N] = LINEAR_LS;
+    nlp_solver_plan->nlp_cost[N] = EXTERNAL;
 
     for (int i = 0; i < N; i++)
     {
@@ -175,7 +176,7 @@ void racecar_lap_time_mpc_acados_create_set_plan(ocp_nlp_plan_t* nlp_solver_plan
     }
     nlp_solver_plan->nlp_constraints[N] = BGH;
 
-    nlp_solver_plan->regularization = CONVEXIFY;
+    nlp_solver_plan->regularization = NO_REGULARIZE;
 
     nlp_solver_plan->globalization = FIXED_STEP;
 }
@@ -293,9 +294,6 @@ static ocp_nlp_dims* racecar_lap_time_mpc_acados_create_setup_dimensions(racecar
         ocp_nlp_dims_set_constraints(nlp_config, nlp_dims, i, "nsg", &nsg[i]);
         ocp_nlp_dims_set_constraints(nlp_config, nlp_dims, i, "nbxe", &nbxe[i]);
     }
-    ocp_nlp_dims_set_cost(nlp_config, nlp_dims, 0, "ny", &ny[0]);
-    for (int i = 1; i < N; i++)
-        ocp_nlp_dims_set_cost(nlp_config, nlp_dims, i, "ny", &ny[i]);
     ocp_nlp_dims_set_constraints(nlp_config, nlp_dims, 0, "nh", &nh[0]);
     ocp_nlp_dims_set_constraints(nlp_config, nlp_dims, 0, "nsh", &nsh[0]);
 
@@ -306,7 +304,6 @@ static ocp_nlp_dims* racecar_lap_time_mpc_acados_create_setup_dimensions(racecar
     }
     ocp_nlp_dims_set_constraints(nlp_config, nlp_dims, N, "nh", &nh[N]);
     ocp_nlp_dims_set_constraints(nlp_config, nlp_dims, N, "nsh", &nsh[N]);
-    ocp_nlp_dims_set_cost(nlp_config, nlp_dims, N, "ny", &ny[N]);
     free(intNp1mem);
 
     return nlp_dims;
@@ -341,6 +338,10 @@ void racecar_lap_time_mpc_acados_create_setup_functions(racecar_lap_time_mpc_sol
     ext_fun_opts.external_workspace = true;
     if (N > 0)
     {
+        // external cost
+        MAP_CASADI_FNC(ext_cost_0_fun, racecar_lap_time_mpc_cost_ext_cost_0_fun);
+        MAP_CASADI_FNC(ext_cost_0_fun_jac, racecar_lap_time_mpc_cost_ext_cost_0_fun_jac);
+        MAP_CASADI_FNC(ext_cost_0_fun_jac_hess, racecar_lap_time_mpc_cost_ext_cost_0_fun_jac_hess);
 
 
 
@@ -362,7 +363,42 @@ void racecar_lap_time_mpc_acados_create_setup_functions(racecar_lap_time_mpc_sol
         }
 
     
+        // external cost
+        capsule->ext_cost_fun = (external_function_external_param_casadi *) malloc(sizeof(external_function_external_param_casadi)*(N-1));
+        for (int i = 0; i < N-1; i++)
+        {
+            MAP_CASADI_FNC(ext_cost_fun[i], racecar_lap_time_mpc_cost_ext_cost_fun);
+        }
+
+        capsule->ext_cost_fun_jac = (external_function_external_param_casadi *) malloc(sizeof(external_function_external_param_casadi)*(N-1));
+        for (int i = 0; i < N-1; i++)
+        {
+            MAP_CASADI_FNC(ext_cost_fun_jac[i], racecar_lap_time_mpc_cost_ext_cost_fun_jac);
+        }
+
+        capsule->ext_cost_fun_jac_hess = (external_function_external_param_casadi *) malloc(sizeof(external_function_external_param_casadi)*(N-1));
+        for (int i = 0; i < N-1; i++)
+        {
+            MAP_CASADI_FNC(ext_cost_fun_jac_hess[i], racecar_lap_time_mpc_cost_ext_cost_fun_jac_hess);
+        }
+
+        
+
+        
     } // N > 0
+    // external cost - function
+    MAP_CASADI_FNC(ext_cost_e_fun, racecar_lap_time_mpc_cost_ext_cost_e_fun);
+
+    // external cost - jacobian
+    MAP_CASADI_FNC(ext_cost_e_fun_jac, racecar_lap_time_mpc_cost_ext_cost_e_fun_jac);
+
+    // external cost - hessian
+    MAP_CASADI_FNC(ext_cost_e_fun_jac_hess, racecar_lap_time_mpc_cost_ext_cost_e_fun_jac_hess);
+
+    // external cost - jacobian wrt params
+    
+
+    
 
 #undef MAP_CASADI_FNC
 }
@@ -495,122 +531,24 @@ void racecar_lap_time_mpc_acados_setup_nlp_in(racecar_lap_time_mpc_solver_capsul
     }
 
     /**** Cost ****/
-    double* yref_0 = calloc(NY0, sizeof(double));
-    // change only the non-zero elements:
-    yref_0[6] = 95;
-    ocp_nlp_cost_model_set(nlp_config, nlp_dims, nlp_in, 0, "yref", yref_0);
-    free(yref_0);
-
-   double* W_0 = calloc(NY0*NY0, sizeof(double));
-    // change only the non-zero elements:
-    W_0[0+(NY0) * 0] = 0.0000005;
-    W_0[1+(NY0) * 1] = 50;
-    W_0[2+(NY0) * 2] = 0.5;
-    W_0[3+(NY0) * 3] = 0.5;
-    W_0[4+(NY0) * 4] = 0.0000005;
-    W_0[5+(NY0) * 5] = 0.25;
-    W_0[6+(NY0) * 6] = 25;
-    W_0[7+(NY0) * 7] = 0.005;
-    W_0[8+(NY0) * 8] = 0.05;
-    ocp_nlp_cost_model_set(nlp_config, nlp_dims, nlp_in, 0, "W", W_0);
-    free(W_0);
-    double* Vx_0 = calloc(NY0*NX, sizeof(double));
-    // change only the non-zero elements:
-    Vx_0[0+(NY0) * 0] = 1;
-    Vx_0[1+(NY0) * 1] = 1;
-    Vx_0[2+(NY0) * 2] = 1;
-    Vx_0[3+(NY0) * 3] = 1;
-    Vx_0[4+(NY0) * 4] = 1;
-    Vx_0[5+(NY0) * 5] = 1;
-    Vx_0[6+(NY0) * 6] = 1;
-    ocp_nlp_cost_model_set(nlp_config, nlp_dims, nlp_in, 0, "Vx", Vx_0);
-    free(Vx_0);
-    double* Vu_0 = calloc(NY0*NU, sizeof(double));
-    // change only the non-zero elements:
-    Vu_0[7+(NY0) * 0] = 1;
-    Vu_0[8+(NY0) * 1] = 1;
-    ocp_nlp_cost_model_set(nlp_config, nlp_dims, nlp_in, 0, "Vu", Vu_0);
-    free(Vu_0);
-    double* yref = calloc(NY, sizeof(double));
-    // change only the non-zero elements:
-    yref[6] = 95;
-
-    for (int i = 1; i < N; i++)
-    {
-        ocp_nlp_cost_model_set(nlp_config, nlp_dims, nlp_in, i, "yref", yref);
-    }
-    free(yref);
-    double* W = calloc(NY*NY, sizeof(double));
-    // change only the non-zero elements:
-    W[0+(NY) * 0] = 0.0000005;
-    W[1+(NY) * 1] = 50;
-    W[2+(NY) * 2] = 0.5;
-    W[3+(NY) * 3] = 0.5;
-    W[4+(NY) * 4] = 0.0000005;
-    W[5+(NY) * 5] = 0.25;
-    W[6+(NY) * 6] = 25;
-    W[7+(NY) * 7] = 0.005;
-    W[8+(NY) * 8] = 0.05;
-
-    for (int i = 1; i < N; i++)
-    {
-        ocp_nlp_cost_model_set(nlp_config, nlp_dims, nlp_in, i, "W", W);
-    }
-    free(W);
-    double* Vx = calloc(NY*NX, sizeof(double));
-    // change only the non-zero elements:
-    Vx[0+(NY) * 0] = 1;
-    Vx[1+(NY) * 1] = 1;
-    Vx[2+(NY) * 2] = 1;
-    Vx[3+(NY) * 3] = 1;
-    Vx[4+(NY) * 4] = 1;
-    Vx[5+(NY) * 5] = 1;
-    Vx[6+(NY) * 6] = 1;
-    for (int i = 1; i < N; i++)
-    {
-        ocp_nlp_cost_model_set(nlp_config, nlp_dims, nlp_in, i, "Vx", Vx);
-    }
-    free(Vx);
-
+    ocp_nlp_cost_model_set_external_param_fun(nlp_config, nlp_dims, nlp_in, 0, "ext_cost_fun", &capsule->ext_cost_0_fun);
+    ocp_nlp_cost_model_set_external_param_fun(nlp_config, nlp_dims, nlp_in, 0, "ext_cost_fun_jac", &capsule->ext_cost_0_fun_jac);
+    ocp_nlp_cost_model_set_external_param_fun(nlp_config, nlp_dims, nlp_in, 0, "ext_cost_fun_jac_hess", &capsule->ext_cost_0_fun_jac_hess);
     
-    double* Vu = calloc(NY*NU, sizeof(double));
-    // change only the non-zero elements:
-    Vu[7+(NY) * 0] = 1;
-    Vu[8+(NY) * 1] = 1;
-
+    
     for (int i = 1; i < N; i++)
     {
-        ocp_nlp_cost_model_set(nlp_config, nlp_dims, nlp_in, i, "Vu", Vu);
+        ocp_nlp_cost_model_set_external_param_fun(nlp_config, nlp_dims, nlp_in, i, "ext_cost_fun", &capsule->ext_cost_fun[i-1]);
+        ocp_nlp_cost_model_set_external_param_fun(nlp_config, nlp_dims, nlp_in, i, "ext_cost_fun_jac", &capsule->ext_cost_fun_jac[i-1]);
+        ocp_nlp_cost_model_set_external_param_fun(nlp_config, nlp_dims, nlp_in, i, "ext_cost_fun_jac_hess", &capsule->ext_cost_fun_jac_hess[i-1]);
+        
+        
     }
-    free(Vu);
-    double* yref_e = calloc(NYN, sizeof(double));
-    // change only the non-zero elements:
-    yref_e[6] = 95;
-    ocp_nlp_cost_model_set(nlp_config, nlp_dims, nlp_in, N, "yref", yref_e);
-    free(yref_e);
-
-    double* W_e = calloc(NYN*NYN, sizeof(double));
-    // change only the non-zero elements:
-    W_e[0+(NYN) * 0] = 0.0000000002;
-    W_e[1+(NYN) * 1] = 0.02;
-    W_e[2+(NYN) * 2] = 0.0002;
-    W_e[3+(NYN) * 3] = 0.0002;
-    W_e[4+(NYN) * 4] = 0.02;
-    W_e[5+(NYN) * 5] = 0.02;
-    W_e[6+(NYN) * 6] = 0.0002;
-    ocp_nlp_cost_model_set(nlp_config, nlp_dims, nlp_in, N, "W", W_e);
-    free(W_e);
-    double* Vx_e = calloc(NYN*NX, sizeof(double));
-    // change only the non-zero elements:
-    Vx_e[0+(NYN) * 0] = 1;
-    Vx_e[1+(NYN) * 1] = 1;
-    Vx_e[2+(NYN) * 2] = 1;
-    Vx_e[3+(NYN) * 3] = 1;
-    Vx_e[4+(NYN) * 4] = 1;
-    Vx_e[5+(NYN) * 5] = 1;
-    Vx_e[6+(NYN) * 6] = 1;
-    ocp_nlp_cost_model_set(nlp_config, nlp_dims, nlp_in, N, "Vx", Vx_e);
-    free(Vx_e);
+    ocp_nlp_cost_model_set_external_param_fun(nlp_config, nlp_dims, nlp_in, N, "ext_cost_fun", &capsule->ext_cost_e_fun);
+    ocp_nlp_cost_model_set_external_param_fun(nlp_config, nlp_dims, nlp_in, N, "ext_cost_fun_jac", &capsule->ext_cost_e_fun_jac);
+    ocp_nlp_cost_model_set_external_param_fun(nlp_config, nlp_dims, nlp_in, N, "ext_cost_fun_jac_hess", &capsule->ext_cost_e_fun_jac_hess);
+    
+    
 
 
 
@@ -635,8 +573,8 @@ void racecar_lap_time_mpc_acados_setup_nlp_in(racecar_lap_time_mpc_solver_capsul
     double* lbx0 = lubx0;
     double* ubx0 = lubx0 + NBX0;
     // change only the non-zero elements:
-    lbx0[1] = 1.5;
-    ubx0[1] = 1.5;
+    lbx0[1] = 0.5;
+    ubx0[1] = 0.5;
     lbx0[6] = 95;
     ubx0[6] = 95;
 
@@ -818,14 +756,20 @@ static void racecar_lap_time_mpc_acados_create_set_opts(racecar_lap_time_mpc_sol
     int qp_solver_cond_N;const int qp_solver_cond_N_ori = 10;
     qp_solver_cond_N = N < qp_solver_cond_N_ori ? N : qp_solver_cond_N_ori; // use the minimum value here
     ocp_nlp_solver_opts_set(nlp_config, nlp_opts, "qp_cond_N", &qp_solver_cond_N);
-    double reg_epsilon = 0.0001;
-    ocp_nlp_solver_opts_set(nlp_config, nlp_opts, "reg_epsilon", &reg_epsilon);
 
     int nlp_solver_ext_qp_res = 0;
     ocp_nlp_solver_opts_set(nlp_config, nlp_opts, "ext_qp_res", &nlp_solver_ext_qp_res);
 
     bool store_iterates = false;
     ocp_nlp_solver_opts_set(nlp_config, nlp_opts, "store_iterates", &store_iterates);
+    int log_primal_step_norm = 0;
+    ocp_nlp_solver_opts_set(nlp_config, nlp_opts, "log_primal_step_norm", &log_primal_step_norm);
+
+    int log_dual_step_norm = 0;
+    ocp_nlp_solver_opts_set(nlp_config, nlp_opts, "log_dual_step_norm", &log_dual_step_norm);
+
+    double nlp_solver_tol_min_step_norm = 0;
+    ocp_nlp_solver_opts_set(nlp_config, nlp_opts, "tol_min_step_norm", &nlp_solver_tol_min_step_norm);
     // set HPIPM mode: should be done before setting other QP solver options
     ocp_nlp_solver_opts_set(nlp_config, nlp_opts, "qp_hpipm_mode", "BALANCE");
 
@@ -837,17 +781,75 @@ static void racecar_lap_time_mpc_acados_create_set_opts(racecar_lap_time_mpc_sol
 
 
 
-    int as_rti_iter = 1;
-    ocp_nlp_solver_opts_set(nlp_config, nlp_opts, "as_rti_iter", &as_rti_iter);
+    // set SQP specific options
+    double nlp_solver_tol_stat = 0.0001;
+    ocp_nlp_solver_opts_set(nlp_config, nlp_opts, "tol_stat", &nlp_solver_tol_stat);
 
-    int as_rti_level = 4;
-    ocp_nlp_solver_opts_set(nlp_config, nlp_opts, "as_rti_level", &as_rti_level);
+    double nlp_solver_tol_eq = 0.0001;
+    ocp_nlp_solver_opts_set(nlp_config, nlp_opts, "tol_eq", &nlp_solver_tol_eq);
 
-    int rti_log_residuals = 0;
-    ocp_nlp_solver_opts_set(nlp_config, nlp_opts, "rti_log_residuals", &rti_log_residuals);
+    double nlp_solver_tol_ineq = 0.0001;
+    ocp_nlp_solver_opts_set(nlp_config, nlp_opts, "tol_ineq", &nlp_solver_tol_ineq);
 
-    int rti_log_only_available_residuals = 0;
-    ocp_nlp_solver_opts_set(nlp_config, nlp_opts, "rti_log_only_available_residuals", &rti_log_only_available_residuals);
+    double nlp_solver_tol_comp = 0.0001;
+    ocp_nlp_solver_opts_set(nlp_config, nlp_opts, "tol_comp", &nlp_solver_tol_comp);
+
+    int nlp_solver_max_iter = 100;
+    ocp_nlp_solver_opts_set(nlp_config, nlp_opts, "max_iter", &nlp_solver_max_iter);
+
+    // set options for adaptive Levenberg-Marquardt Update
+    bool with_adaptive_levenberg_marquardt = 0;
+    ocp_nlp_solver_opts_set(nlp_config, nlp_opts, "with_adaptive_levenberg_marquardt", &with_adaptive_levenberg_marquardt);
+
+    double adaptive_levenberg_marquardt_lam = 5;
+    ocp_nlp_solver_opts_set(nlp_config, nlp_opts, "adaptive_levenberg_marquardt_lam", &adaptive_levenberg_marquardt_lam);
+
+    double adaptive_levenberg_marquardt_mu_min = 0.0000000000000001;
+    ocp_nlp_solver_opts_set(nlp_config, nlp_opts, "adaptive_levenberg_marquardt_mu_min", &adaptive_levenberg_marquardt_mu_min);
+
+    double adaptive_levenberg_marquardt_mu0 = 0.001;
+    ocp_nlp_solver_opts_set(nlp_config, nlp_opts, "adaptive_levenberg_marquardt_mu0", &adaptive_levenberg_marquardt_mu0);
+
+    double adaptive_levenberg_marquardt_obj_scalar = 2;
+    ocp_nlp_solver_opts_set(nlp_config, nlp_opts, "adaptive_levenberg_marquardt_obj_scalar", &adaptive_levenberg_marquardt_obj_scalar);
+
+    bool eval_residual_at_max_iter = false;
+    ocp_nlp_solver_opts_set(nlp_config, nlp_opts, "eval_residual_at_max_iter", &eval_residual_at_max_iter);
+
+    // QP scaling
+    double qpscaling_ub_max_abs_eig = 100000;
+    ocp_nlp_solver_opts_set(nlp_config, nlp_opts, "qpscaling_ub_max_abs_eig", &qpscaling_ub_max_abs_eig);
+
+    double qpscaling_lb_norm_inf_grad_obj = 0.0001;
+    ocp_nlp_solver_opts_set(nlp_config, nlp_opts, "qpscaling_lb_norm_inf_grad_obj", &qpscaling_lb_norm_inf_grad_obj);
+
+    qpscaling_scale_objective_type qpscaling_scale_objective = NO_OBJECTIVE_SCALING;
+    ocp_nlp_solver_opts_set(nlp_config, nlp_opts, "qpscaling_scale_objective", &qpscaling_scale_objective);
+
+    ocp_nlp_qpscaling_constraint_type qpscaling_scale_constraints = NO_CONSTRAINT_SCALING;
+    ocp_nlp_solver_opts_set(nlp_config, nlp_opts, "qpscaling_scale_constraints", &qpscaling_scale_constraints);
+
+    // NLP QP tol strategy
+    ocp_nlp_qp_tol_strategy_t nlp_qp_tol_strategy = FIXED_QP_TOL;
+    ocp_nlp_solver_opts_set(nlp_config, nlp_opts, "nlp_qp_tol_strategy", &nlp_qp_tol_strategy);
+
+    double nlp_qp_tol_reduction_factor = 0.1;
+    ocp_nlp_solver_opts_set(nlp_config, nlp_opts, "nlp_qp_tol_reduction_factor", &nlp_qp_tol_reduction_factor);
+
+    double nlp_qp_tol_safety_factor = 0.1;
+    ocp_nlp_solver_opts_set(nlp_config, nlp_opts, "nlp_qp_tol_safety_factor", &nlp_qp_tol_safety_factor);
+
+    double nlp_qp_tol_min_stat = 0.000000001;
+    ocp_nlp_solver_opts_set(nlp_config, nlp_opts, "nlp_qp_tol_min_stat", &nlp_qp_tol_min_stat);
+
+    double nlp_qp_tol_min_eq = 0.0000000001;
+    ocp_nlp_solver_opts_set(nlp_config, nlp_opts, "nlp_qp_tol_min_eq", &nlp_qp_tol_min_eq);
+
+    double nlp_qp_tol_min_ineq = 0.0000000001;
+    ocp_nlp_solver_opts_set(nlp_config, nlp_opts, "nlp_qp_tol_min_ineq", &nlp_qp_tol_min_ineq);
+
+    double nlp_qp_tol_min_comp = 0.00000000001;
+    ocp_nlp_solver_opts_set(nlp_config, nlp_opts, "nlp_qp_tol_min_comp", &nlp_qp_tol_min_comp);
 
     bool with_anderson_acceleration = 0;
     ocp_nlp_solver_opts_set(nlp_config, nlp_opts, "with_anderson_acceleration", &with_anderson_acceleration);
@@ -870,6 +872,11 @@ static void racecar_lap_time_mpc_acados_create_set_opts(racecar_lap_time_mpc_sol
 
 
     int ext_cost_num_hess = 0;
+    for (int i = 0; i < N; i++)
+    {
+        ocp_nlp_solver_opts_set_at_stage(nlp_config, nlp_opts, i, "cost_numerical_hessian", &ext_cost_num_hess);
+    }
+    ocp_nlp_solver_opts_set_at_stage(nlp_config, nlp_opts, N, "cost_numerical_hessian", &ext_cost_num_hess);
 }
 
 
@@ -889,7 +896,7 @@ void racecar_lap_time_mpc_acados_set_nlp_out(racecar_lap_time_mpc_solver_capsule
     double* x0 = xu0;
 
     // initialize with x0
-    x0[1] = 1.5;
+    x0[1] = 0.5;
     x0[6] = 95;
 
 
@@ -1044,7 +1051,7 @@ int racecar_lap_time_mpc_acados_update_params(racecar_lap_time_mpc_solver_capsul
 {
     int solver_status = 0;
 
-    int casadi_np = 1;
+    int casadi_np = 7;
     if (casadi_np != np) {
         printf("acados_update_params: trying to set %i parameters for external functions."
             " External function has %i parameters. Exiting.\n", np, casadi_np);
@@ -1123,6 +1130,27 @@ int racecar_lap_time_mpc_acados_free(racecar_lap_time_mpc_solver_capsule* capsul
     free(capsule->expl_ode_fun);
 
     // cost
+    external_function_external_param_casadi_free(&capsule->ext_cost_0_fun);
+    external_function_external_param_casadi_free(&capsule->ext_cost_0_fun_jac);
+    external_function_external_param_casadi_free(&capsule->ext_cost_0_fun_jac_hess);
+    
+    
+    for (int i = 0; i < N - 1; i++)
+    {
+        external_function_external_param_casadi_free(&capsule->ext_cost_fun[i]);
+        external_function_external_param_casadi_free(&capsule->ext_cost_fun_jac[i]);
+        external_function_external_param_casadi_free(&capsule->ext_cost_fun_jac_hess[i]);
+        
+        
+    }
+    free(capsule->ext_cost_fun);
+    free(capsule->ext_cost_fun_jac);
+    free(capsule->ext_cost_fun_jac_hess);
+    external_function_external_param_casadi_free(&capsule->ext_cost_e_fun);
+    external_function_external_param_casadi_free(&capsule->ext_cost_e_fun_jac);
+    external_function_external_param_casadi_free(&capsule->ext_cost_e_fun_jac_hess);
+    
+    
 
     // constraints
 
@@ -1152,13 +1180,23 @@ void racecar_lap_time_mpc_acados_print_stats(racecar_lap_time_mpc_solver_capsule
     int nrow = nlp_iter+1 < stat_m ? nlp_iter+1 : stat_m;
 
 
-    printf("iter\tqp_stat\tqp_iter\n");
+    printf("iter\tres_stat\tres_eq\t\tres_ineq\tres_comp\tqp_stat\tqp_iter\talpha");
+    if (stat_n > 8)
+        printf("\t\tqp_res_stat\tqp_res_eq\tqp_res_ineq\tqp_res_comp");
+    printf("\n");
     for (int i = 0; i < nrow; i++)
     {
         for (int j = 0; j < stat_n + 1; j++)
         {
-            tmp_int = (int) stat[i + j * nrow];
-            printf("%d\t", tmp_int);
+            if (j == 0 || j == 5 || j == 6)
+            {
+                tmp_int = (int) stat[i + j * nrow];
+                printf("%d\t", tmp_int);
+            }
+            else
+            {
+                printf("%e\t", stat[i + j * nrow]);
+            }
         }
         printf("\n");
     }

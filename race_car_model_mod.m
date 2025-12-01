@@ -41,7 +41,7 @@ function model = race_car_model_mod()
     %  Parameters
     %  p = [kappa_r; delta_prev; a_prev]
     % ==============
-    p           = SX.sym('p', 3, 1);
+    p           = SX.sym('p', 7, 1);
     kappa_r     = p(1);    % reference curvature
     delta_prev  = p(2);    %#ok<NASGU> % used only in cost, not dynamics
     a_prev      = p(3);    %#ok<NASGU> % used only in cost, not dynamics

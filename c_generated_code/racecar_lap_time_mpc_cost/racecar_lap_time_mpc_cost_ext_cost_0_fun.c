@@ -34,7 +34,7 @@ extern "C" {
 #define casadi_s1 CASADI_PREFIX(s1)
 #define casadi_s2 CASADI_PREFIX(s2)
 #define casadi_s3 CASADI_PREFIX(s3)
-#define casadi_s4 CASADI_PREFIX(s4)
+#define casadi_sq CASADI_PREFIX(sq)
 
 /* Symbol visibility in DLLs */
 #ifndef CASADI_SYMBOL_EXPORT
@@ -51,61 +51,55 @@ extern "C" {
   #endif
 #endif
 
+casadi_real casadi_sq(casadi_real x) { return x*x;}
+
 static const casadi_int casadi_s0[3] = {7, 1, 1};
 static const casadi_int casadi_s1[3] = {2, 1, 1};
 static const casadi_int casadi_s2[3] = {0, 0, 1};
-static const casadi_int casadi_s3[3] = {3, 1, 1};
-static const casadi_int casadi_s4[3] = {1, 1, 1};
+static const casadi_int casadi_s3[3] = {1, 1, 1};
 
-/* racecar_lap_time_mpc_cost_ext_cost_0_fun:(i0[7],i1[2],i2[],i3[3])->(o0) */
+/* racecar_lap_time_mpc_cost_ext_cost_0_fun:(i0[7],i1[2],i2[],i3[7])->(o0) */
 static int casadi_f0(const casadi_real** arg, casadi_real** res, casadi_int* iw, casadi_real* w, int mem) {
   casadi_real a0, a1, a2, a3, a4;
+  a0=5.;
+  a1=arg[0]? arg[0][1] : 0;
+  a2=arg[3]? arg[3][3] : 0;
+  a1=(a1-a2);
+  a1=casadi_sq(a1);
+  a1=(a0*a1);
+  a2=arg[0]? arg[0][4] : 0;
+  a3=arg[3]? arg[3][4] : 0;
+  a2=(a2-a3);
+  a2=casadi_sq(a2);
+  a2=(a0*a2);
+  a1=(a1+a2);
+  a2=arg[0]? arg[0][5] : 0;
+  a3=arg[3]? arg[3][5] : 0;
+  a2=(a2-a3);
+  a2=casadi_sq(a2);
+  a0=(a0*a2);
+  a1=(a1+a0);
   a0=1.0000000000000001e-01;
-  a1=arg[0]? arg[0][0] : 0;
-  a0=(a0*a1);
-  a0=(a0*a1);
-  a1=1.0000000000000000e-08;
-  a2=arg[0]? arg[0][1] : 0;
-  a3=(a1*a2);
+  a2=arg[0]? arg[0][6] : 0;
+  a3=arg[3]? arg[3][6] : 0;
+  a2=(a2-a3);
+  a2=casadi_sq(a2);
+  a0=(a0*a2);
+  a1=(a1+a0);
+  a0=1.0000000000000000e-03;
+  a2=arg[1]? arg[1][0] : 0;
+  a3=arg[3]? arg[3][1] : 0;
+  a2=(a2-a3);
+  a3=(a0*a2);
   a3=(a3*a2);
-  a0=(a0+a3);
-  a3=1.0000000000000000e-02;
-  a2=arg[0]? arg[0][2] : 0;
-  a4=(a3*a2);
-  a4=(a4*a2);
-  a0=(a0+a4);
-  a4=arg[0]? arg[0][3] : 0;
-  a3=(a3*a4);
-  a3=(a3*a4);
-  a0=(a0+a3);
-  a3=arg[0]? arg[0][4] : 0;
-  a1=(a1*a3);
-  a1=(a1*a3);
-  a0=(a0+a1);
-  a1=5.0000000000000001e-03;
-  a3=arg[0]? arg[0][5] : 0;
-  a1=(a1*a3);
-  a1=(a1*a3);
-  a0=(a0+a1);
-  a1=5.0000000000000000e-01;
-  a3=arg[0]? arg[0][6] : 0;
-  a1=(a1*a3);
-  a1=(a1*a3);
-  a0=(a0+a1);
-  a1=1.0000000000000000e-03;
-  a3=arg[1]? arg[1][0] : 0;
-  a4=arg[3]? arg[3][1] : 0;
-  a3=(a3-a4);
-  a4=(a1*a3);
-  a4=(a4*a3);
-  a3=arg[1]? arg[1][1] : 0;
-  a2=arg[3]? arg[3][2] : 0;
-  a3=(a3-a2);
-  a1=(a1*a3);
-  a1=(a1*a3);
-  a4=(a4+a1);
-  a0=(a0+a4);
-  if (res[0]!=0) res[0][0]=a0;
+  a2=arg[1]? arg[1][1] : 0;
+  a4=arg[3]? arg[3][2] : 0;
+  a2=(a2-a4);
+  a0=(a0*a2);
+  a0=(a0*a2);
+  a3=(a3+a0);
+  a1=(a1+a3);
+  if (res[0]!=0) res[0][0]=a1;
   return 0;
 }
 
@@ -169,14 +163,14 @@ CASADI_SYMBOL_EXPORT const casadi_int* racecar_lap_time_mpc_cost_ext_cost_0_fun_
     case 0: return casadi_s0;
     case 1: return casadi_s1;
     case 2: return casadi_s2;
-    case 3: return casadi_s3;
+    case 3: return casadi_s0;
     default: return 0;
   }
 }
 
 CASADI_SYMBOL_EXPORT const casadi_int* racecar_lap_time_mpc_cost_ext_cost_0_fun_sparsity_out(casadi_int i) {
   switch (i) {
-    case 0: return casadi_s4;
+    case 0: return casadi_s3;
     default: return 0;
   }
 }

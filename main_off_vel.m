@@ -4,7 +4,7 @@ import casadi.*
 
 %% ==============
 %  Load model
-% ==============
+% ===============
 model = racecar_model();   % must be the updated version with s in the state
 
 nx = length(model.x);   % 7 states: [s; vx; vy; wz; ye; theta_e; SoC]
@@ -78,8 +78,8 @@ ocp_model.set('dyn_expr_f', model.f_expl_expr);
 delta_max = 0.6;
 delta_min = -0.6;
 
-% a_max = 6.0;
-% a_min = -6.0;
+% a_max = 30.0;
+% a_min = -30.0;
 
 %ye_max is constant because there is no obstacle
 ye_max = 0.12;
@@ -174,8 +174,8 @@ Q = diag([ ...
 
 % Input weights (Rc)
 R = diag([ ...
-    1e-4;   % delta
-    1e-3]); % a
+    1e-3;   % delta
+    1e-1]); % a
 
 % Terminal weights (Pc)
 Qe = diag([ ...
@@ -234,7 +234,7 @@ ocp_model.set('cost_y_ref_e', y_ref_e);
 % ==============
 ocp_opts = acados_ocp_opts();
 ocp_opts.set('param_scheme_N', N);
-ocp_opts.set('nlp_solver', 'sqp_rti');          % or 'sqp' sqp-rti
+ocp_opts.set('nlp_solver', 'sqp');          % or 'sqp' sqp-rti
 ocp_opts.set('nlp_solver_exact_hessian', 'false');
 ocp_opts.set('sim_method', 'erk');          % explicit RK
 ocp_opts.set('sim_method_num_stages', 4);

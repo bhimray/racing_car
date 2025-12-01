@@ -223,6 +223,222 @@ acados_solver_racecar_lap_time_mpc.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\ocp_racecar_lap_time_mpc.dir\build.make CMakeFiles/ocp_racecar_lap_time_mpc.dir/acados_solver_racecar_lap_time_mpc.c.s
 .PHONY : acados_solver_racecar_lap_time_mpc.c.s
 
+racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_0_fun.obj: racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_0_fun.c.obj
+.PHONY : racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_0_fun.obj
+
+# target to build an object file
+racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_0_fun.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ocp_racecar_lap_time_mpc.dir\build.make CMakeFiles/ocp_racecar_lap_time_mpc.dir/racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_0_fun.c.obj
+.PHONY : racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_0_fun.c.obj
+
+racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_0_fun.i: racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_0_fun.c.i
+.PHONY : racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_0_fun.i
+
+# target to preprocess a source file
+racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_0_fun.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ocp_racecar_lap_time_mpc.dir\build.make CMakeFiles/ocp_racecar_lap_time_mpc.dir/racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_0_fun.c.i
+.PHONY : racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_0_fun.c.i
+
+racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_0_fun.s: racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_0_fun.c.s
+.PHONY : racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_0_fun.s
+
+# target to generate assembly for a file
+racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_0_fun.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ocp_racecar_lap_time_mpc.dir\build.make CMakeFiles/ocp_racecar_lap_time_mpc.dir/racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_0_fun.c.s
+.PHONY : racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_0_fun.c.s
+
+racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_0_fun_jac.obj: racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_0_fun_jac.c.obj
+.PHONY : racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_0_fun_jac.obj
+
+# target to build an object file
+racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_0_fun_jac.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ocp_racecar_lap_time_mpc.dir\build.make CMakeFiles/ocp_racecar_lap_time_mpc.dir/racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_0_fun_jac.c.obj
+.PHONY : racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_0_fun_jac.c.obj
+
+racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_0_fun_jac.i: racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_0_fun_jac.c.i
+.PHONY : racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_0_fun_jac.i
+
+# target to preprocess a source file
+racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_0_fun_jac.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ocp_racecar_lap_time_mpc.dir\build.make CMakeFiles/ocp_racecar_lap_time_mpc.dir/racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_0_fun_jac.c.i
+.PHONY : racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_0_fun_jac.c.i
+
+racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_0_fun_jac.s: racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_0_fun_jac.c.s
+.PHONY : racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_0_fun_jac.s
+
+# target to generate assembly for a file
+racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_0_fun_jac.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ocp_racecar_lap_time_mpc.dir\build.make CMakeFiles/ocp_racecar_lap_time_mpc.dir/racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_0_fun_jac.c.s
+.PHONY : racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_0_fun_jac.c.s
+
+racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_0_fun_jac_hess.obj: racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_0_fun_jac_hess.c.obj
+.PHONY : racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_0_fun_jac_hess.obj
+
+# target to build an object file
+racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_0_fun_jac_hess.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ocp_racecar_lap_time_mpc.dir\build.make CMakeFiles/ocp_racecar_lap_time_mpc.dir/racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_0_fun_jac_hess.c.obj
+.PHONY : racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_0_fun_jac_hess.c.obj
+
+racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_0_fun_jac_hess.i: racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_0_fun_jac_hess.c.i
+.PHONY : racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_0_fun_jac_hess.i
+
+# target to preprocess a source file
+racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_0_fun_jac_hess.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ocp_racecar_lap_time_mpc.dir\build.make CMakeFiles/ocp_racecar_lap_time_mpc.dir/racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_0_fun_jac_hess.c.i
+.PHONY : racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_0_fun_jac_hess.c.i
+
+racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_0_fun_jac_hess.s: racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_0_fun_jac_hess.c.s
+.PHONY : racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_0_fun_jac_hess.s
+
+# target to generate assembly for a file
+racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_0_fun_jac_hess.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ocp_racecar_lap_time_mpc.dir\build.make CMakeFiles/ocp_racecar_lap_time_mpc.dir/racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_0_fun_jac_hess.c.s
+.PHONY : racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_0_fun_jac_hess.c.s
+
+racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_e_fun.obj: racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_e_fun.c.obj
+.PHONY : racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_e_fun.obj
+
+# target to build an object file
+racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_e_fun.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ocp_racecar_lap_time_mpc.dir\build.make CMakeFiles/ocp_racecar_lap_time_mpc.dir/racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_e_fun.c.obj
+.PHONY : racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_e_fun.c.obj
+
+racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_e_fun.i: racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_e_fun.c.i
+.PHONY : racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_e_fun.i
+
+# target to preprocess a source file
+racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_e_fun.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ocp_racecar_lap_time_mpc.dir\build.make CMakeFiles/ocp_racecar_lap_time_mpc.dir/racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_e_fun.c.i
+.PHONY : racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_e_fun.c.i
+
+racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_e_fun.s: racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_e_fun.c.s
+.PHONY : racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_e_fun.s
+
+# target to generate assembly for a file
+racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_e_fun.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ocp_racecar_lap_time_mpc.dir\build.make CMakeFiles/ocp_racecar_lap_time_mpc.dir/racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_e_fun.c.s
+.PHONY : racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_e_fun.c.s
+
+racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_e_fun_jac.obj: racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_e_fun_jac.c.obj
+.PHONY : racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_e_fun_jac.obj
+
+# target to build an object file
+racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_e_fun_jac.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ocp_racecar_lap_time_mpc.dir\build.make CMakeFiles/ocp_racecar_lap_time_mpc.dir/racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_e_fun_jac.c.obj
+.PHONY : racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_e_fun_jac.c.obj
+
+racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_e_fun_jac.i: racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_e_fun_jac.c.i
+.PHONY : racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_e_fun_jac.i
+
+# target to preprocess a source file
+racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_e_fun_jac.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ocp_racecar_lap_time_mpc.dir\build.make CMakeFiles/ocp_racecar_lap_time_mpc.dir/racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_e_fun_jac.c.i
+.PHONY : racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_e_fun_jac.c.i
+
+racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_e_fun_jac.s: racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_e_fun_jac.c.s
+.PHONY : racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_e_fun_jac.s
+
+# target to generate assembly for a file
+racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_e_fun_jac.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ocp_racecar_lap_time_mpc.dir\build.make CMakeFiles/ocp_racecar_lap_time_mpc.dir/racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_e_fun_jac.c.s
+.PHONY : racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_e_fun_jac.c.s
+
+racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_e_fun_jac_hess.obj: racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_e_fun_jac_hess.c.obj
+.PHONY : racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_e_fun_jac_hess.obj
+
+# target to build an object file
+racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_e_fun_jac_hess.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ocp_racecar_lap_time_mpc.dir\build.make CMakeFiles/ocp_racecar_lap_time_mpc.dir/racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_e_fun_jac_hess.c.obj
+.PHONY : racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_e_fun_jac_hess.c.obj
+
+racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_e_fun_jac_hess.i: racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_e_fun_jac_hess.c.i
+.PHONY : racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_e_fun_jac_hess.i
+
+# target to preprocess a source file
+racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_e_fun_jac_hess.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ocp_racecar_lap_time_mpc.dir\build.make CMakeFiles/ocp_racecar_lap_time_mpc.dir/racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_e_fun_jac_hess.c.i
+.PHONY : racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_e_fun_jac_hess.c.i
+
+racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_e_fun_jac_hess.s: racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_e_fun_jac_hess.c.s
+.PHONY : racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_e_fun_jac_hess.s
+
+# target to generate assembly for a file
+racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_e_fun_jac_hess.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ocp_racecar_lap_time_mpc.dir\build.make CMakeFiles/ocp_racecar_lap_time_mpc.dir/racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_e_fun_jac_hess.c.s
+.PHONY : racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_e_fun_jac_hess.c.s
+
+racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_fun.obj: racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_fun.c.obj
+.PHONY : racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_fun.obj
+
+# target to build an object file
+racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_fun.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ocp_racecar_lap_time_mpc.dir\build.make CMakeFiles/ocp_racecar_lap_time_mpc.dir/racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_fun.c.obj
+.PHONY : racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_fun.c.obj
+
+racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_fun.i: racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_fun.c.i
+.PHONY : racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_fun.i
+
+# target to preprocess a source file
+racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_fun.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ocp_racecar_lap_time_mpc.dir\build.make CMakeFiles/ocp_racecar_lap_time_mpc.dir/racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_fun.c.i
+.PHONY : racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_fun.c.i
+
+racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_fun.s: racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_fun.c.s
+.PHONY : racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_fun.s
+
+# target to generate assembly for a file
+racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_fun.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ocp_racecar_lap_time_mpc.dir\build.make CMakeFiles/ocp_racecar_lap_time_mpc.dir/racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_fun.c.s
+.PHONY : racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_fun.c.s
+
+racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_fun_jac.obj: racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_fun_jac.c.obj
+.PHONY : racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_fun_jac.obj
+
+# target to build an object file
+racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_fun_jac.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ocp_racecar_lap_time_mpc.dir\build.make CMakeFiles/ocp_racecar_lap_time_mpc.dir/racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_fun_jac.c.obj
+.PHONY : racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_fun_jac.c.obj
+
+racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_fun_jac.i: racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_fun_jac.c.i
+.PHONY : racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_fun_jac.i
+
+# target to preprocess a source file
+racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_fun_jac.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ocp_racecar_lap_time_mpc.dir\build.make CMakeFiles/ocp_racecar_lap_time_mpc.dir/racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_fun_jac.c.i
+.PHONY : racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_fun_jac.c.i
+
+racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_fun_jac.s: racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_fun_jac.c.s
+.PHONY : racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_fun_jac.s
+
+# target to generate assembly for a file
+racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_fun_jac.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ocp_racecar_lap_time_mpc.dir\build.make CMakeFiles/ocp_racecar_lap_time_mpc.dir/racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_fun_jac.c.s
+.PHONY : racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_fun_jac.c.s
+
+racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_fun_jac_hess.obj: racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_fun_jac_hess.c.obj
+.PHONY : racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_fun_jac_hess.obj
+
+# target to build an object file
+racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_fun_jac_hess.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ocp_racecar_lap_time_mpc.dir\build.make CMakeFiles/ocp_racecar_lap_time_mpc.dir/racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_fun_jac_hess.c.obj
+.PHONY : racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_fun_jac_hess.c.obj
+
+racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_fun_jac_hess.i: racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_fun_jac_hess.c.i
+.PHONY : racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_fun_jac_hess.i
+
+# target to preprocess a source file
+racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_fun_jac_hess.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ocp_racecar_lap_time_mpc.dir\build.make CMakeFiles/ocp_racecar_lap_time_mpc.dir/racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_fun_jac_hess.c.i
+.PHONY : racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_fun_jac_hess.c.i
+
+racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_fun_jac_hess.s: racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_fun_jac_hess.c.s
+.PHONY : racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_fun_jac_hess.s
+
+# target to generate assembly for a file
+racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_fun_jac_hess.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ocp_racecar_lap_time_mpc.dir\build.make CMakeFiles/ocp_racecar_lap_time_mpc.dir/racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_fun_jac_hess.c.s
+.PHONY : racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_fun_jac_hess.c.s
+
 racecar_lap_time_mpc_model/racecar_lap_time_mpc_expl_ode_fun.obj: racecar_lap_time_mpc_model/racecar_lap_time_mpc_expl_ode_fun.c.obj
 .PHONY : racecar_lap_time_mpc_model/racecar_lap_time_mpc_expl_ode_fun.obj
 
@@ -313,6 +529,33 @@ help:
 	@echo ... acados_solver_racecar_lap_time_mpc.obj
 	@echo ... acados_solver_racecar_lap_time_mpc.i
 	@echo ... acados_solver_racecar_lap_time_mpc.s
+	@echo ... racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_0_fun.obj
+	@echo ... racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_0_fun.i
+	@echo ... racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_0_fun.s
+	@echo ... racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_0_fun_jac.obj
+	@echo ... racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_0_fun_jac.i
+	@echo ... racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_0_fun_jac.s
+	@echo ... racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_0_fun_jac_hess.obj
+	@echo ... racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_0_fun_jac_hess.i
+	@echo ... racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_0_fun_jac_hess.s
+	@echo ... racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_e_fun.obj
+	@echo ... racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_e_fun.i
+	@echo ... racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_e_fun.s
+	@echo ... racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_e_fun_jac.obj
+	@echo ... racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_e_fun_jac.i
+	@echo ... racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_e_fun_jac.s
+	@echo ... racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_e_fun_jac_hess.obj
+	@echo ... racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_e_fun_jac_hess.i
+	@echo ... racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_e_fun_jac_hess.s
+	@echo ... racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_fun.obj
+	@echo ... racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_fun.i
+	@echo ... racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_fun.s
+	@echo ... racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_fun_jac.obj
+	@echo ... racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_fun_jac.i
+	@echo ... racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_fun_jac.s
+	@echo ... racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_fun_jac_hess.obj
+	@echo ... racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_fun_jac_hess.i
+	@echo ... racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_fun_jac_hess.s
 	@echo ... racecar_lap_time_mpc_model/racecar_lap_time_mpc_expl_ode_fun.obj
 	@echo ... racecar_lap_time_mpc_model/racecar_lap_time_mpc_expl_ode_fun.i
 	@echo ... racecar_lap_time_mpc_model/racecar_lap_time_mpc_expl_ode_fun.s

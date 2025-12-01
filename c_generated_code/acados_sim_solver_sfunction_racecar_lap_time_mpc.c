@@ -69,7 +69,7 @@ static void mdlInitializeSizes (SimStruct *S)
     // u0
     ssSetInputPortVectorDimension(S, 1, 2);
     // parameters
-    ssSetInputPortVectorDimension(S, 2, 1);
+    ssSetInputPortVectorDimension(S, 2, 7);
 
     // specify dimension information for the output ports
     ssSetOutputPortVectorDimension(S, 0, 7 ); // xnext
@@ -167,11 +167,11 @@ static void mdlOutputs(SimStruct *S, int_T tid)
     // parameters
     in_sign = ssGetInputPortRealSignalPtrs(S, 2);
 
-    for (int i = 0; i < 1; i++)
+    for (int i = 0; i < 7; i++)
         buffer[i] = (double)(*in_sign[i]);
 
     // update value of parameters
-    racecar_lap_time_mpc_acados_sim_update_params(capsule, buffer, 1);
+    racecar_lap_time_mpc_acados_sim_update_params(capsule, buffer, 7);
 
 
     /* call solver */

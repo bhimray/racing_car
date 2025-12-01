@@ -594,7 +594,7 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
 
         MEX_DIM_CHECK_MAT(fun_name, field, nrow, ncol, nrow, 2);
         // create int index vector
-        int idx_tmp[1];
+        int idx_tmp[7];
         for (int ip = 0; ip<nrow; ip++)
             idx_tmp[ip] = (int) value[ip];
 
