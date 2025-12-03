@@ -455,63 +455,63 @@ void racecar_lap_time_mpc_acados_setup_nlp_in(racecar_lap_time_mpc_solver_capsul
     {
         // set time_steps
     
-        double time_step = 0.02;
+        double time_step = 0.01;
         for (int i = 0; i < N; i++)
         {
             ocp_nlp_in_set(nlp_config, nlp_dims, nlp_in, i, "Ts", &time_step);
         }
         // set cost scaling
         double* cost_scaling = malloc((N+1)*sizeof(double));
-        cost_scaling[0] = 0.02;
-        cost_scaling[1] = 0.02;
-        cost_scaling[2] = 0.02;
-        cost_scaling[3] = 0.02;
-        cost_scaling[4] = 0.02;
-        cost_scaling[5] = 0.02;
-        cost_scaling[6] = 0.02;
-        cost_scaling[7] = 0.02;
-        cost_scaling[8] = 0.02;
-        cost_scaling[9] = 0.02;
-        cost_scaling[10] = 0.02;
-        cost_scaling[11] = 0.02;
-        cost_scaling[12] = 0.02;
-        cost_scaling[13] = 0.02;
-        cost_scaling[14] = 0.02;
-        cost_scaling[15] = 0.02;
-        cost_scaling[16] = 0.02;
-        cost_scaling[17] = 0.02;
-        cost_scaling[18] = 0.02;
-        cost_scaling[19] = 0.02;
-        cost_scaling[20] = 0.02;
-        cost_scaling[21] = 0.02;
-        cost_scaling[22] = 0.02;
-        cost_scaling[23] = 0.02;
-        cost_scaling[24] = 0.02;
-        cost_scaling[25] = 0.02;
-        cost_scaling[26] = 0.02;
-        cost_scaling[27] = 0.02;
-        cost_scaling[28] = 0.02;
-        cost_scaling[29] = 0.02;
-        cost_scaling[30] = 0.02;
-        cost_scaling[31] = 0.02;
-        cost_scaling[32] = 0.02;
-        cost_scaling[33] = 0.02;
-        cost_scaling[34] = 0.02;
-        cost_scaling[35] = 0.02;
-        cost_scaling[36] = 0.02;
-        cost_scaling[37] = 0.02;
-        cost_scaling[38] = 0.02;
-        cost_scaling[39] = 0.02;
-        cost_scaling[40] = 0.02;
-        cost_scaling[41] = 0.02;
-        cost_scaling[42] = 0.02;
-        cost_scaling[43] = 0.02;
-        cost_scaling[44] = 0.02;
-        cost_scaling[45] = 0.02;
-        cost_scaling[46] = 0.02;
-        cost_scaling[47] = 0.02;
-        cost_scaling[48] = 0.02;
-        cost_scaling[49] = 0.02;
+        cost_scaling[0] = 0.01;
+        cost_scaling[1] = 0.01;
+        cost_scaling[2] = 0.01;
+        cost_scaling[3] = 0.01;
+        cost_scaling[4] = 0.01;
+        cost_scaling[5] = 0.01;
+        cost_scaling[6] = 0.01;
+        cost_scaling[7] = 0.01;
+        cost_scaling[8] = 0.01;
+        cost_scaling[9] = 0.01;
+        cost_scaling[10] = 0.01;
+        cost_scaling[11] = 0.01;
+        cost_scaling[12] = 0.01;
+        cost_scaling[13] = 0.01;
+        cost_scaling[14] = 0.01;
+        cost_scaling[15] = 0.01;
+        cost_scaling[16] = 0.01;
+        cost_scaling[17] = 0.01;
+        cost_scaling[18] = 0.01;
+        cost_scaling[19] = 0.01;
+        cost_scaling[20] = 0.01;
+        cost_scaling[21] = 0.01;
+        cost_scaling[22] = 0.01;
+        cost_scaling[23] = 0.01;
+        cost_scaling[24] = 0.01;
+        cost_scaling[25] = 0.01;
+        cost_scaling[26] = 0.01;
+        cost_scaling[27] = 0.01;
+        cost_scaling[28] = 0.01;
+        cost_scaling[29] = 0.01;
+        cost_scaling[30] = 0.01;
+        cost_scaling[31] = 0.01;
+        cost_scaling[32] = 0.01;
+        cost_scaling[33] = 0.01;
+        cost_scaling[34] = 0.01;
+        cost_scaling[35] = 0.01;
+        cost_scaling[36] = 0.01;
+        cost_scaling[37] = 0.01;
+        cost_scaling[38] = 0.01;
+        cost_scaling[39] = 0.01;
+        cost_scaling[40] = 0.01;
+        cost_scaling[41] = 0.01;
+        cost_scaling[42] = 0.01;
+        cost_scaling[43] = 0.01;
+        cost_scaling[44] = 0.01;
+        cost_scaling[45] = 0.01;
+        cost_scaling[46] = 0.01;
+        cost_scaling[47] = 0.01;
+        cost_scaling[48] = 0.01;
+        cost_scaling[49] = 0.01;
         cost_scaling[50] = 1;
         for (int i = 0; i <= N; i++)
         {
@@ -573,8 +573,8 @@ void racecar_lap_time_mpc_acados_setup_nlp_in(racecar_lap_time_mpc_solver_capsul
     double* lbx0 = lubx0;
     double* ubx0 = lubx0 + NBX0;
     // change only the non-zero elements:
-    lbx0[1] = 0.5;
-    ubx0[1] = 0.5;
+    lbx0[1] = 1.5;
+    ubx0[1] = 1.5;
     lbx0[6] = 95;
     ubx0[6] = 95;
 
@@ -610,11 +610,14 @@ void racecar_lap_time_mpc_acados_setup_nlp_in(racecar_lap_time_mpc_solver_capsul
     // u
     int* idxbu = malloc(NBU * sizeof(int));
     idxbu[0] = 0;
+    idxbu[1] = 1;
     double* lubu = calloc(2*NBU, sizeof(double));
     double* lbu = lubu;
     double* ubu = lubu + NBU;
     lbu[0] = -0.6;
     ubu[0] = 0.6;
+    lbu[1] = -20;
+    ubu[1] = 20;
 
     for (int i = 0; i < N; i++)
     {
@@ -896,7 +899,7 @@ void racecar_lap_time_mpc_acados_set_nlp_out(racecar_lap_time_mpc_solver_capsule
     double* x0 = xu0;
 
     // initialize with x0
-    x0[1] = 0.5;
+    x0[1] = 1.5;
     x0[6] = 95;
 
 

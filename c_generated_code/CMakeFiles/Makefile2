@@ -151,8 +151,8 @@ CMakeFiles/ocp_racecar_lap_time_mpc.dir/clean:
 # Target rules for target CMakeFiles/acados_ocp_solver_racecar_lap_time_mpc.dir
 
 # All Build rule for target.
-CMakeFiles/acados_ocp_solver_racecar_lap_time_mpc.dir/all: CMakeFiles/ocp_racecar_lap_time_mpc.dir/all
 CMakeFiles/acados_ocp_solver_racecar_lap_time_mpc.dir/all: CMakeFiles/model_racecar_lap_time_mpc.dir/all
+CMakeFiles/acados_ocp_solver_racecar_lap_time_mpc.dir/all: CMakeFiles/ocp_racecar_lap_time_mpc.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\acados_ocp_solver_racecar_lap_time_mpc.dir\build.make CMakeFiles/acados_ocp_solver_racecar_lap_time_mpc.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\acados_ocp_solver_racecar_lap_time_mpc.dir\build.make CMakeFiles/acados_ocp_solver_racecar_lap_time_mpc.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\rayyu\acados\examples\acados_matlab_octave\ACADOS_lap_time\c_generated_code\CMakeFiles --progress-num=1 "Built target acados_ocp_solver_racecar_lap_time_mpc"

@@ -73,7 +73,7 @@ int racecar_lap_time_mpc_acados_sim_create(racecar_lap_time_mpc_sim_solver_capsu
     const int np = RACECAR_LAP_TIME_MPC_NP;
     bool tmp_bool;
 
-    double Tsim = 0.02;
+    double Tsim = 0.01;
 
     external_function_opts ext_fun_opts;
     external_function_opts_set_to_default(&ext_fun_opts);

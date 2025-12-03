@@ -24,7 +24,6 @@ Psiref     = track_data(:,4);
 kappa_raw  = track_data(:,5);
 
 pathlength = Sref(end);
-
 % --- scale curvature to realistic magnitude ---
 scale_factor = 10;
 kappa_scaled = kappa_raw / scale_factor;
@@ -42,18 +41,12 @@ kapparef_s = interpolant('kapparef_s', 'linear', {s_ext}, kappa_ext);
     struct('station', Sref, 'curvature', full(kapparef_s(Sref)), 'total_length', pathlength), ...
     1.2, 1.8, 20.0);
 
-% % Ensure column vectors
-% s0       = s0(:);
-% kapparef = kapparef(:);
-
-% Build bspline interpolant: kapparef_s(s) ≈ κ(s)
-% kapparef_s = interpolant('kapparef_s', 'bspline', {s0}, kapparef);
 %% =============================
 %  Horizon settings
 % =============================
 N  = 50;          % prediction horizon steps
-T  = 1.0;         % horizon duration
-dt = T/N;
+T  = 0.5;         % horizon duration
+dt = T/N;          % sampling time
 
 
 %% =============================
@@ -78,8 +71,8 @@ ocp_model.set('dyn_expr_f', model.f_expl_expr);
 delta_min = -0.6;
 delta_max = 0.6;
 
-% a_max = 4.0;
-% a_min = -4.0;
+a_max = 20.0;
+a_min = -20.0;
 
 % Lateral bounds (track width ~ 0.24)
 ye_min = -0.12;
@@ -95,21 +88,21 @@ ocp_model.set('constr_lbx', ye_min);
 ocp_model.set('constr_ubx', ye_max);
 
 % --- input bounds ---
-nbu = 1;
+nbu = 2;
 Jbu = zeros(nbu,nu);
 Jbu(1,1) = 1;   % delta
-% Jbu(2,2) = 1;   % a
+Jbu(2,2) = 1;   % a
 
 ocp_model.set('constr_Jbu', Jbu);
-ocp_model.set('constr_lbu', delta_min);
-ocp_model.set('constr_ubu', delta_max);
+ocp_model.set('constr_lbu', [delta_min, a_min]);
+ocp_model.set('constr_ubu', [delta_max, a_max]);
 
 
 %% =============================
 %  Initial condition
 % =============================
 x0 = [0.0;    % s
-      0.5;    % vx
+      1.5;    % vx
       0.0;    % vy
       0.0;    % wz
       0.0;    % ye
@@ -119,10 +112,8 @@ x0 = [0.0;    % s
 
 ocp_model.set('constr_x0', x0);
 
-u_prev = [0.0; 0.0];   % for Δu cost
-
 %% =============================
-%  Cost (MPC-RG style)
+%  Cost (MPC with custom cost function)
 % =============================
 ocp_model.set('cost_type','ext_cost');
 ocp_model.set('cost_type_e','ext_cost');
@@ -142,45 +133,21 @@ e_ye    = x(5) - ye_ref;
 e_theta = x(6) - theta_ref;
 e_soc   = x(7) - SoC_ref;
 
-% --- State weights (all non-negative) ---
-Q_c = diag([ ...
-    1e-8;   % s
-    1;    % vx  (we want to track high vx)
-    1e-2;   % vy
-    1e-2;   % wz
-    1e-8;    % ye
-    5e-3;    % theta_e
-    5e-1]);  % SoC
-
-% no linear term for now
-q_c = zeros(nx,1);
-
-% --- Δu weights (R_c positive definite) ---
-R_c = diag([
-    1e-3;   % Δdelta
-    1e-3]); % Δa (increase this if accel still jumps)
-
-% --- Terminal weight (P_c) ---
-P_c = diag([ ...
-    1e-1;   % s
-    2.0;    % vx
-    1e-2;   % vy
-    1e-2;   % wz
-    1e-1;   % ye
-    1e-1;   % theta_e
-    0.01]);  % SoC
-
 % delta u cost
 Delta_u = u - u_prev;
 
 % tracking error cost
-track_err = e_vx^2 * 5.0 ...
-          + e_ye^2 * 5 ...
-          + e_theta^2 * 5 ...
+track_err_cost = e_vx^2 * 5.0 ...
+          + e_ye^2 * 0.5 ...
+          + e_theta^2 * 0.5 ...
           + e_soc^2 * 0.1;
 
-stage_cost = track_err + Delta_u.' * R_c * Delta_u;
-terminal_cost = track_err;   % or scaled
+% --- Δu weights (R_c positive definite) --- 
+R_c = diag([ 1e-2; % Δdelta 
+            1e-2]); % Δa (increase this if accel still jumps)
+
+stage_cost = track_err_cost + Delta_u.' * R_c * Delta_u;
+terminal_cost = track_err_cost;
 
 ocp_model.set('cost_expr_ext_cost', stage_cost);
 ocp_model.set('cost_expr_ext_cost_e', terminal_cost);
@@ -231,9 +198,15 @@ t_mpc_max  = 0;
 t_mpc_sum  = 0;
 lap_time = 0;
 
+s_obs   = 5.0;
+ye_obs  = 0.05;
+obs_w   = 0.05;
+obs_L   = 0.05;
+track_width = 0.24;
+
 %% ==============
 %  Closed-loop MPC simulation with curvature from track
-% ==============
+% ===============
 for i = 1:Nsim
 
     % update reference
@@ -250,24 +223,22 @@ for i = 1:Nsim
         p_val = [kappa_val; 0; 0; vx_ref_val; ye_ref_val; theta_ref_val; SoC_ref_val];
         ocp_solver.set('p', p_val, j);
 
+        [ye_min_s, ye_max_s] = track_bounds_with_obstacle( ...
+        s_curr, track_width, s_obs, ye_obs, obs_w, obs_L);
 
+        if j == 0
+            lbx_full = -inf(nx,1);
+            ubx_full =  inf(nx,1);
 
-        % [ye_min_s, ye_max_s] = track_bounds_with_obstacle( ...
-        % s_curr, track_width, s_obs, ye_obs, obs_w, obs_L);
+            lbx_full(nx) = ye_min_s;   % MATLAB → 1-based
+            ubx_full(nx) = ye_max_s;
 
-        % if j == 0
-        %     lbx_full = -inf(nx,1);
-        %     ubx_full =  inf(nx,1);
-
-        %     lbx_full(nx) = ye_min_s;   % MATLAB → 1-based
-        %     ubx_full(nx) = ye_max_s;
-
-        %     ocp_solver.set('constr_lbx', lbx_full, j);
-        %     ocp_solver.set('constr_ubx', ubx_full, j);
-        % else
-        %     ocp_solver.set('constr_lbx', ye_min_s, j);
-        %     ocp_solver.set('constr_ubx', ye_max_s, j);
-        % end
+            ocp_solver.set('constr_lbx', lbx_full, j);
+            ocp_solver.set('constr_ubx', ubx_full, j);
+        else
+            ocp_solver.set('constr_lbx', ye_min_s, j);
+            ocp_solver.set('constr_ubx', ye_max_s, j);
+        end
     end
     % yref_N = [sref, 0, 0, 0, 0, 0, 0];
     % ocp_solver.set('cost_y_ref_e', yref_N);
@@ -281,8 +252,6 @@ for i = 1:Nsim
     t_mpc_sum     = t_mpc_sum + t_mpc;
     t_mpc_max     = max(t_mpc_max, t_mpc);
 
-    disp("x_curr:");
-    disp(x_curr);
     % --- solve OCP ---
     ocp_solver.solve();
     status = ocp_solver.get('status');
@@ -336,18 +305,47 @@ for i = 1:Nsim
     end
 end 
 
+t_mpc_avg = t_mpc_sum / Nsim;
+Ts        = dt;       % sampling time
+CI_avg    = t_mpc_avg / Ts;
+CI_max    = t_mpc_max / Ts;
+
+fprintf('\n===== MPC Timing Report =====\n');
+fprintf('Average MPC solve time  : %.6f s\n', t_mpc_avg);
+fprintf('Maximum MPC solve time  : %.6f s\n', t_mpc_max);
+fprintf('Sampling time Ts        : %.6f s\n', Ts);
+fprintf('CI_avg = Tc_avg/Ts      : %.4f\n', CI_avg);
+fprintf('CI_max = Tc_max/Ts      : %.4f\n', CI_max);
+disp('Minimum lap time (theoretical): ');
+disp(lap_time_min);
+disp('Achieved lap time (MPC): ');
+disp(lap_time);
+
+if CI_max < 1
+    fprintf('Status: REAL-TIME OK (CI_max < 1)\n');
+else
+    fprintf('Status: NOT REAL-TIME (CI_max >= 1)\n');
+end
+
 %% ==============
 %  Plots
-% ==============
+% ===============
+
 t = (0:Nsim-1) * dt;
 
-figure;
-subplot(3,1,1);
-plot(t, simX(:,2)); grid on;
-xlabel('t [s]'); ylabel('v_x [m/s]');
-title('Longitudinal speed');
+plot_velocity_profile( ...
+    struct('station', Sref, 'curvature', full(kapparef_s(Sref)), 'total_length', pathlength), ...
+    Ux_final, Ux_steady, Ux_forward);
 
-subplot(3,1,2);
+figure;
+plot(t, simX(:,2)); grid on;hold on;
+plot(t, simX(:,3));
+plot(t, simX(:,4));
+xlabel('t [s]'); ylabel('v_x, v_y [m/s], wz [rad/s]');
+legend('v_x','v_y','w_z');
+title('Speed');
+
+figure;
 plot(t, simX(:,5)); hold on;
 plot(t, simX(:,6));
 grid on;
@@ -355,7 +353,7 @@ xlabel('t [s]'); ylabel('ye, theta_e');
 legend('ye','theta_e');
 title('Track error');
 
-subplot(3,1,3);
+figure;
 plot(t, simX(:,7));
 grid on;
 xlabel('t [s]'); ylabel('SoC');
@@ -370,4 +368,18 @@ legend('\delta','a');
 title('Control inputs');
 
 % If you have the helper from the example, you can also plot on the track:
-plotTrackProjection(simX, track_file);
+[Xtraj, Ytraj ] = plotTrackProjection(simX, track_file);
+hold on;
+plotObstacle(track_file, s_obs, ye_obs, obs_w, obs_L);
+
+Accel = simU(:,2);  % longitudinal acceleration
+figure;
+scatter(Xtraj, Ytraj, 30, Accel, 'filled');
+colorbar;
+colormap(jet);
+title('Acceleration along the track');
+xlabel('X [m]'); ylabel('Y [m]');
+axis equal;
+grid on;
+
+

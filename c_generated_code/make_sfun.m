@@ -141,11 +141,11 @@ i_in = i_in + 1;
 input_note = strcat(input_note, num2str(i_in), ') ubx values concatenated for stages 1 to N-1, size [49]\n ');
 sfun_input_names = [sfun_input_names; 'ubx [49]'];
 i_in = i_in + 1;
-input_note = strcat(input_note, num2str(i_in), ') lbu for stages 0 to N-1, size [50]\n ');
-sfun_input_names = [sfun_input_names; 'lbu [50]'];
+input_note = strcat(input_note, num2str(i_in), ') lbu for stages 0 to N-1, size [100]\n ');
+sfun_input_names = [sfun_input_names; 'lbu [100]'];
 i_in = i_in + 1;
-input_note = strcat(input_note, num2str(i_in), ') ubu for stages 0 to N-1, size [50]\n ');
-sfun_input_names = [sfun_input_names; 'ubu [50]'];
+input_note = strcat(input_note, num2str(i_in), ') ubu for stages 0 to N-1, size [100]\n ');
+sfun_input_names = [sfun_input_names; 'ubu [100]'];
 i_in = i_in + 1;
 
 

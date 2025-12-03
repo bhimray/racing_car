@@ -91,7 +91,7 @@ static int casadi_f0(const casadi_real** arg, casadi_real** res, casadi_int* iw,
   a10=1.8000000000000000e+00;
   a12=(a12/a10);
   a06=(a06-a12);
-  a12=9.8100000000000007e-02;
+  a12=1.1772000000000000e+01;
   a06=(a06-a12);
   a12=(a14*a04);
   a06=(a06+a12);
@@ -126,7 +126,7 @@ static int casadi_f0(const casadi_real** arg, casadi_real** res, casadi_int* iw,
   a03=1.0718750000000001e-02;
   a05=casadi_sq(a00);
   a03=(a03*a05);
-  a05=1.7658000000000004e-01;
+  a05=2.1189600000000002e+01;
   a05=(a05*a00);
   a03=(a03+a05);
   a14=(a14*a03);

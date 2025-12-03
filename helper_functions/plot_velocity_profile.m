@@ -1,14 +1,12 @@
 
 function plot_velocity_profile(track, Ux_final, Ux_steady, Ux_forward)
-% Create Figure 3 from the paper showing the 3-pass method
 
     K = track.curvature;
     s = track.station;
 
-    % Create a figure similar to the paper's layout
     figure();
     hold on;
-    % Subplot (a): Sample curvature profile (like paper's Fig 3a)
+    % Subplot (a): Sample curvature profile (paper's Fig 3a)
     subplot(2,2,1);
     plot(s, K, 'b-', 'LineWidth', 2);
     xlabel('Distance along path, s (m)');
@@ -48,5 +46,5 @@ function plot_velocity_profile(track, Ux_final, Ux_steady, Ux_forward)
     xlim([0, track.total_length]);
     hold off;
     
-    sgtitle('Paper Figure 3: Three-Pass Velocity Profile Generation Method');
+    sgtitle('Three-Pass Velocity Profile Generation Method');
 end

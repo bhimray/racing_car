@@ -18,7 +18,7 @@ function [Ux_final, Ux_steady, Ux_forward, lap_time] = velocity_profile_gen(trac
     for i = 2:length(s)
         ds = s(i) - s(i-1);
         
-        % Available longitudinal force (simplified)
+        % Available longitudinal force
         Fx_max = max_engine_force;
         Fy_demand = vehicle_mass * Ux_forward(i-1)^2 * abs(K(i));
         Fx_available = max(0, Fx_max - 0.5 * Fy_demand);
@@ -37,7 +37,7 @@ function [Ux_final, Ux_steady, Ux_forward, lap_time] = velocity_profile_gen(trac
     for i = length(s)-1:-1:1
         ds = s(i+1) - s(i);
         
-        % Available braking force (simplified)
+        % Available braking force
         Fy_demand = vehicle_mass * Ux_final(i+1)^2 * abs(K(i));
         Fx_brake = max_braking_force - 0.5 * Fy_demand;
         ax_brake = -Fx_brake / vehicle_mass;

@@ -43,8 +43,8 @@ function model = race_car_model_mod()
     % ==============
     p           = SX.sym('p', 7, 1);
     kappa_r     = p(1);    % reference curvature
-    delta_prev  = p(2);    %#ok<NASGU> % used only in cost, not dynamics
-    a_prev      = p(3);    %#ok<NASGU> % used only in cost, not dynamics
+    delta_prev  = p(2);    
+    a_prev      = p(3);    
 
     %% ==============
     %  Vehicle parameters
@@ -55,8 +55,7 @@ function model = race_car_model_mod()
     lr  = 0.125;    % CG to rear axle [m]
     Cf  = 68;       % front cornering stiffness [N/rad]
     Cr  = 71;       % rear cornering stiffness [N/rad]
-    mu_tyre = 0.01;
-    mu_rr   = 0.01; %#ok<NASGU>
+    mu_tyre = 1.2;
     g    = 9.81;
 
     % Battery / aero parameters (illustrative)
@@ -121,7 +120,7 @@ function model = race_car_model_mod()
     model.x           = x;
     model.xdot        = xdot;
     model.u           = u;
-    model.p           = p;          % <-- 3×1 parameter vector
+    model.p           = p;          
     model.f_expl_expr = f_expl;
     model.f_impl_expr = f_impl;
 end
