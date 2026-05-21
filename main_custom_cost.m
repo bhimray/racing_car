@@ -157,7 +157,7 @@ ocp_model.set('cost_expr_ext_cost_e', terminal_cost);
 % =============================
 ocp_opts = acados_ocp_opts();
 ocp_opts.set('param_scheme_N', N);
-ocp_opts.set('nlp_solver', 'sqp');          % or 'sqp' sqp_rti
+ocp_opts.set('nlp_solver', 'sqp_rti');          % or 'sqp' sqp_rti
 ocp_opts.set('nlp_solver_exact_hessian', 'false');
 ocp_opts.set('sim_method', 'erk');          % explicit RK
 ocp_opts.set('sim_method_num_stages', 4);
@@ -184,8 +184,6 @@ sref_N = 3;  % reference for final reference progress
 
 simX = zeros(Nsim, nx);
 simU = zeros(Nsim, nu);
-t_comp_sum = 0;
-t_comp_max = 0;
 
 x_curr = x0;
 s0 = x0(1);
@@ -240,20 +238,18 @@ for i = 1:Nsim
             ocp_solver.set('constr_ubx', ye_max_s, j);
         end
     end
-    % yref_N = [sref, 0, 0, 0, 0, 0, 0];
-    % ocp_solver.set('cost_y_ref_e', yref_N);
 
-    t_start = tic;
     % --- update x0 constraint ---
     ocp_solver.set('constr_x0', x_curr);
+    
+    % --- solve OCP ---
+    t_start = tic;
+    ocp_solver.solve(); % mpc solver
     t_mpc = toc(t_start);
-
     t_mpc_list(i) = t_mpc;
     t_mpc_sum     = t_mpc_sum + t_mpc;
     t_mpc_max     = max(t_mpc_max, t_mpc);
 
-    % --- solve OCP ---
-    ocp_solver.solve();
     status = ocp_solver.get('status');
     ocp_solver.print('stat'); 
     if status ~= 0 && status ~= 2

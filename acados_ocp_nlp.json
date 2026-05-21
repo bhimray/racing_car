@@ -516,7 +516,7 @@
 		"nlp_solver_tol_ineq":0.0001,
 		"nlp_solver_tol_min_step_norm":0,
 		"nlp_solver_tol_stat":0.0001,
-		"nlp_solver_type":"SQP",
+		"nlp_solver_type":"SQP_RTI",
 		"nlp_solver_warm_start_first_qp":false,
 		"nlp_solver_warm_start_first_qp_from_nlp":false,
 		"print_level":0,

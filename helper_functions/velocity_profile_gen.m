@@ -1,7 +1,7 @@
 function [Ux_final, Ux_steady, Ux_forward, lap_time] = velocity_profile_gen(track, mu, vehicle_mass, Ux_max)
 
     % Default parameters
-    g = 9.81;           % gravity
+    g = 20;           % gravity
     max_engine_force = vehicle_mass * g;  % N from paper Table I
     
     s = track.station;
