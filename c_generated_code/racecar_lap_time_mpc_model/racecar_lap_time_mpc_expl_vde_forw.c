@@ -34,7 +34,6 @@ extern "C" {
 #define casadi_s1 CASADI_PREFIX(s1)
 #define casadi_s2 CASADI_PREFIX(s2)
 #define casadi_s3 CASADI_PREFIX(s3)
-#define casadi_s4 CASADI_PREFIX(s4)
 #define casadi_sq CASADI_PREFIX(sq)
 
 /* Symbol visibility in DLLs */
@@ -58,9 +57,8 @@ static const casadi_int casadi_s0[3] = {7, 1, 1};
 static const casadi_int casadi_s1[3] = {7, 7, 1};
 static const casadi_int casadi_s2[3] = {7, 2, 1};
 static const casadi_int casadi_s3[3] = {2, 1, 1};
-static const casadi_int casadi_s4[3] = {1, 1, 1};
 
-/* racecar_lap_time_mpc_expl_vde_forw:(i0[7],i1[7x7],i2[7x2],i3[2],i4)->(o0[7],o1[7x7],o2[7x2]) */
+/* racecar_lap_time_mpc_expl_vde_forw:(i0[7],i1[7x7],i2[7x2],i3[2],i4[7])->(o0[7],o1[7x7],o2[7x2]) */
 static int casadi_f0(const casadi_real** arg, casadi_real** res, casadi_int* iw, casadi_real* w, int mem) {
   casadi_real a00, a01, a02, a03, a04, a05, a06, a07, a08, a09, a10, a11;
   casadi_real a12, a13, a14, a15, a16, a17, a18, a19, a20, a21, a22, a23;
@@ -876,7 +874,7 @@ CASADI_SYMBOL_EXPORT const casadi_int* racecar_lap_time_mpc_expl_vde_forw_sparsi
     case 1: return casadi_s1;
     case 2: return casadi_s2;
     case 3: return casadi_s3;
-    case 4: return casadi_s4;
+    case 4: return casadi_s0;
     default: return 0;
   }
 }

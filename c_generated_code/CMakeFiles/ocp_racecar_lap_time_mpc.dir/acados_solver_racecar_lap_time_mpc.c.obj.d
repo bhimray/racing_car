@@ -311,4 +311,5 @@ CMakeFiles/ocp_racecar_lap_time_mpc.dir/acados_solver_racecar_lap_time_mpc.c.obj
  C:/Users/rayyu/acados/include/acados_c/sim_interface.h \
  C:/Users/rayyu/acados/include/acados_c/external_function_interface.h \
  C:\Users\rayyu\acados\examples\acados_matlab_octave\ACADOS_lap_time\c_generated_code\racecar_lap_time_mpc_model/racecar_lap_time_mpc_model.h \
+ C:\Users\rayyu\acados\examples\acados_matlab_octave\ACADOS_lap_time\c_generated_code\racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost.h \
  C:\Users\rayyu\acados\examples\acados_matlab_octave\ACADOS_lap_time\c_generated_code\acados_solver_racecar_lap_time_mpc.h

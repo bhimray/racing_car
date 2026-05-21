@@ -37,7 +37,7 @@
 #define RACECAR_LAP_TIME_MPC_NX     7
 #define RACECAR_LAP_TIME_MPC_NZ     0
 #define RACECAR_LAP_TIME_MPC_NU     2
-#define RACECAR_LAP_TIME_MPC_NP     1
+#define RACECAR_LAP_TIME_MPC_NP     7
 
 #ifdef __cplusplus
 extern "C" {

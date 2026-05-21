@@ -122,12 +122,12 @@ CMakeFiles/model_racecar_lap_time_mpc.dir/clean:
 CMakeFiles/ocp_racecar_lap_time_mpc.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\ocp_racecar_lap_time_mpc.dir\build.make CMakeFiles/ocp_racecar_lap_time_mpc.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\ocp_racecar_lap_time_mpc.dir\build.make CMakeFiles/ocp_racecar_lap_time_mpc.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\rayyu\acados\examples\acados_matlab_octave\ACADOS_lap_time\c_generated_code\CMakeFiles --progress-num=5 "Built target ocp_racecar_lap_time_mpc"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\rayyu\acados\examples\acados_matlab_octave\ACADOS_lap_time\c_generated_code\CMakeFiles --progress-num=5,6,7,8,9,10,11,12,13,14 "Built target ocp_racecar_lap_time_mpc"
 .PHONY : CMakeFiles/ocp_racecar_lap_time_mpc.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/ocp_racecar_lap_time_mpc.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\rayyu\acados\examples\acados_matlab_octave\ACADOS_lap_time\c_generated_code\CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\rayyu\acados\examples\acados_matlab_octave\ACADOS_lap_time\c_generated_code\CMakeFiles 10
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/ocp_racecar_lap_time_mpc.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\rayyu\acados\examples\acados_matlab_octave\ACADOS_lap_time\c_generated_code\CMakeFiles 0
 .PHONY : CMakeFiles/ocp_racecar_lap_time_mpc.dir/rule
@@ -139,7 +139,7 @@ ocp_racecar_lap_time_mpc: CMakeFiles/ocp_racecar_lap_time_mpc.dir/rule
 # codegen rule for target.
 CMakeFiles/ocp_racecar_lap_time_mpc.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\ocp_racecar_lap_time_mpc.dir\build.make CMakeFiles/ocp_racecar_lap_time_mpc.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\rayyu\acados\examples\acados_matlab_octave\ACADOS_lap_time\c_generated_code\CMakeFiles --progress-num=5 "Finished codegen for target ocp_racecar_lap_time_mpc"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\rayyu\acados\examples\acados_matlab_octave\ACADOS_lap_time\c_generated_code\CMakeFiles --progress-num=5,6,7,8,9,10,11,12,13,14 "Finished codegen for target ocp_racecar_lap_time_mpc"
 .PHONY : CMakeFiles/ocp_racecar_lap_time_mpc.dir/codegen
 
 # clean rule for target.
@@ -151,8 +151,8 @@ CMakeFiles/ocp_racecar_lap_time_mpc.dir/clean:
 # Target rules for target CMakeFiles/acados_ocp_solver_racecar_lap_time_mpc.dir
 
 # All Build rule for target.
-CMakeFiles/acados_ocp_solver_racecar_lap_time_mpc.dir/all: CMakeFiles/ocp_racecar_lap_time_mpc.dir/all
 CMakeFiles/acados_ocp_solver_racecar_lap_time_mpc.dir/all: CMakeFiles/model_racecar_lap_time_mpc.dir/all
+CMakeFiles/acados_ocp_solver_racecar_lap_time_mpc.dir/all: CMakeFiles/ocp_racecar_lap_time_mpc.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\acados_ocp_solver_racecar_lap_time_mpc.dir\build.make CMakeFiles/acados_ocp_solver_racecar_lap_time_mpc.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\acados_ocp_solver_racecar_lap_time_mpc.dir\build.make CMakeFiles/acados_ocp_solver_racecar_lap_time_mpc.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\rayyu\acados\examples\acados_matlab_octave\ACADOS_lap_time\c_generated_code\CMakeFiles --progress-num=1 "Built target acados_ocp_solver_racecar_lap_time_mpc"
@@ -160,7 +160,7 @@ CMakeFiles/acados_ocp_solver_racecar_lap_time_mpc.dir/all: CMakeFiles/model_race
 
 # Build rule for subdir invocation for target.
 CMakeFiles/acados_ocp_solver_racecar_lap_time_mpc.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\rayyu\acados\examples\acados_matlab_octave\ACADOS_lap_time\c_generated_code\CMakeFiles 5
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\rayyu\acados\examples\acados_matlab_octave\ACADOS_lap_time\c_generated_code\CMakeFiles 14
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/acados_ocp_solver_racecar_lap_time_mpc.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\rayyu\acados\examples\acados_matlab_octave\ACADOS_lap_time\c_generated_code\CMakeFiles 0
 .PHONY : CMakeFiles/acados_ocp_solver_racecar_lap_time_mpc.dir/rule

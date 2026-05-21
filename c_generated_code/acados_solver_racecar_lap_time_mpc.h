@@ -39,11 +39,11 @@
 #define RACECAR_LAP_TIME_MPC_NX     7
 #define RACECAR_LAP_TIME_MPC_NZ     0
 #define RACECAR_LAP_TIME_MPC_NU     2
-#define RACECAR_LAP_TIME_MPC_NP     1
+#define RACECAR_LAP_TIME_MPC_NP     7
 #define RACECAR_LAP_TIME_MPC_NP_GLOBAL     0
 #define RACECAR_LAP_TIME_MPC_NBX    1
 #define RACECAR_LAP_TIME_MPC_NBX0   7
-#define RACECAR_LAP_TIME_MPC_NBU    1
+#define RACECAR_LAP_TIME_MPC_NBU    2
 #define RACECAR_LAP_TIME_MPC_NSBX   0
 #define RACECAR_LAP_TIME_MPC_NSBU   0
 #define RACECAR_LAP_TIME_MPC_NSH    0
@@ -61,9 +61,9 @@
 #define RACECAR_LAP_TIME_MPC_NG     0
 #define RACECAR_LAP_TIME_MPC_NBXN   0
 #define RACECAR_LAP_TIME_MPC_NGN    0
-#define RACECAR_LAP_TIME_MPC_NY0    9
-#define RACECAR_LAP_TIME_MPC_NY     9
-#define RACECAR_LAP_TIME_MPC_NYN    7
+#define RACECAR_LAP_TIME_MPC_NY0    0
+#define RACECAR_LAP_TIME_MPC_NY     0
+#define RACECAR_LAP_TIME_MPC_NYN    0
 #define RACECAR_LAP_TIME_MPC_N      50
 #define RACECAR_LAP_TIME_MPC_NH     0
 #define RACECAR_LAP_TIME_MPC_NHN    0
@@ -107,8 +107,24 @@ typedef struct racecar_lap_time_mpc_solver_capsule
 
     // cost
 
+    external_function_external_param_casadi *ext_cost_fun;
+    external_function_external_param_casadi *ext_cost_fun_jac;
+    external_function_external_param_casadi *ext_cost_fun_jac_hess;
 
 
+
+
+
+    external_function_external_param_casadi ext_cost_0_fun;
+    external_function_external_param_casadi ext_cost_0_fun_jac;
+    external_function_external_param_casadi ext_cost_0_fun_jac_hess;
+
+
+
+
+    external_function_external_param_casadi ext_cost_e_fun;
+    external_function_external_param_casadi ext_cost_e_fun_jac;
+    external_function_external_param_casadi ext_cost_e_fun_jac_hess;
 
 
 

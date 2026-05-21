@@ -302,7 +302,98 @@ CMakeFiles/ocp_racecar_lap_time_mpc.dir/acados_solver_racecar_lap_time_mpc.c.obj
   C:/Users/rayyu/acados/include/hpipm/include/hpipm_d_ocp_qp_res.h \
   C:/Users/rayyu/acados/include/hpipm/include/hpipm_d_ocp_qp_sol.h \
   acados_solver_racecar_lap_time_mpc.h \
+  racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost.h \
   racecar_lap_time_mpc_model/racecar_lap_time_mpc_model.h
+
+CMakeFiles/ocp_racecar_lap_time_mpc.dir/racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_0_fun.c.obj: racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_0_fun.c \
+  C:/ProgramData/MATLAB/SupportPackages/R2024a/mingw64/x86_64-w64-mingw32/include/_mingw.h \
+  C:/ProgramData/MATLAB/SupportPackages/R2024a/mingw64/x86_64-w64-mingw32/include/_mingw_mac.h \
+  C:/ProgramData/MATLAB/SupportPackages/R2024a/mingw64/x86_64-w64-mingw32/include/_mingw_secapi.h \
+  C:/ProgramData/MATLAB/SupportPackages/R2024a/mingw64/x86_64-w64-mingw32/include/corecrt.h \
+  C:/ProgramData/MATLAB/SupportPackages/R2024a/mingw64/x86_64-w64-mingw32/include/crtdefs.h \
+  C:/ProgramData/MATLAB/SupportPackages/R2024a/mingw64/x86_64-w64-mingw32/include/math.h \
+  C:/ProgramData/MATLAB/SupportPackages/R2024a/mingw64/x86_64-w64-mingw32/include/sdks/_mingw_ddk.h \
+  C:/ProgramData/MATLAB/SupportPackages/R2024a/mingw64/x86_64-w64-mingw32/include/vadefs.h
+
+CMakeFiles/ocp_racecar_lap_time_mpc.dir/racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_0_fun_jac.c.obj: racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_0_fun_jac.c \
+  C:/ProgramData/MATLAB/SupportPackages/R2024a/mingw64/x86_64-w64-mingw32/include/_mingw.h \
+  C:/ProgramData/MATLAB/SupportPackages/R2024a/mingw64/x86_64-w64-mingw32/include/_mingw_mac.h \
+  C:/ProgramData/MATLAB/SupportPackages/R2024a/mingw64/x86_64-w64-mingw32/include/_mingw_secapi.h \
+  C:/ProgramData/MATLAB/SupportPackages/R2024a/mingw64/x86_64-w64-mingw32/include/corecrt.h \
+  C:/ProgramData/MATLAB/SupportPackages/R2024a/mingw64/x86_64-w64-mingw32/include/crtdefs.h \
+  C:/ProgramData/MATLAB/SupportPackages/R2024a/mingw64/x86_64-w64-mingw32/include/math.h \
+  C:/ProgramData/MATLAB/SupportPackages/R2024a/mingw64/x86_64-w64-mingw32/include/sdks/_mingw_ddk.h \
+  C:/ProgramData/MATLAB/SupportPackages/R2024a/mingw64/x86_64-w64-mingw32/include/vadefs.h
+
+CMakeFiles/ocp_racecar_lap_time_mpc.dir/racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_0_fun_jac_hess.c.obj: racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_0_fun_jac_hess.c \
+  C:/ProgramData/MATLAB/SupportPackages/R2024a/mingw64/x86_64-w64-mingw32/include/_mingw.h \
+  C:/ProgramData/MATLAB/SupportPackages/R2024a/mingw64/x86_64-w64-mingw32/include/_mingw_mac.h \
+  C:/ProgramData/MATLAB/SupportPackages/R2024a/mingw64/x86_64-w64-mingw32/include/_mingw_secapi.h \
+  C:/ProgramData/MATLAB/SupportPackages/R2024a/mingw64/x86_64-w64-mingw32/include/corecrt.h \
+  C:/ProgramData/MATLAB/SupportPackages/R2024a/mingw64/x86_64-w64-mingw32/include/crtdefs.h \
+  C:/ProgramData/MATLAB/SupportPackages/R2024a/mingw64/x86_64-w64-mingw32/include/math.h \
+  C:/ProgramData/MATLAB/SupportPackages/R2024a/mingw64/x86_64-w64-mingw32/include/sdks/_mingw_ddk.h \
+  C:/ProgramData/MATLAB/SupportPackages/R2024a/mingw64/x86_64-w64-mingw32/include/vadefs.h
+
+CMakeFiles/ocp_racecar_lap_time_mpc.dir/racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_e_fun.c.obj: racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_e_fun.c \
+  C:/ProgramData/MATLAB/SupportPackages/R2024a/mingw64/x86_64-w64-mingw32/include/_mingw.h \
+  C:/ProgramData/MATLAB/SupportPackages/R2024a/mingw64/x86_64-w64-mingw32/include/_mingw_mac.h \
+  C:/ProgramData/MATLAB/SupportPackages/R2024a/mingw64/x86_64-w64-mingw32/include/_mingw_secapi.h \
+  C:/ProgramData/MATLAB/SupportPackages/R2024a/mingw64/x86_64-w64-mingw32/include/corecrt.h \
+  C:/ProgramData/MATLAB/SupportPackages/R2024a/mingw64/x86_64-w64-mingw32/include/crtdefs.h \
+  C:/ProgramData/MATLAB/SupportPackages/R2024a/mingw64/x86_64-w64-mingw32/include/math.h \
+  C:/ProgramData/MATLAB/SupportPackages/R2024a/mingw64/x86_64-w64-mingw32/include/sdks/_mingw_ddk.h \
+  C:/ProgramData/MATLAB/SupportPackages/R2024a/mingw64/x86_64-w64-mingw32/include/vadefs.h
+
+CMakeFiles/ocp_racecar_lap_time_mpc.dir/racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_e_fun_jac.c.obj: racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_e_fun_jac.c \
+  C:/ProgramData/MATLAB/SupportPackages/R2024a/mingw64/x86_64-w64-mingw32/include/_mingw.h \
+  C:/ProgramData/MATLAB/SupportPackages/R2024a/mingw64/x86_64-w64-mingw32/include/_mingw_mac.h \
+  C:/ProgramData/MATLAB/SupportPackages/R2024a/mingw64/x86_64-w64-mingw32/include/_mingw_secapi.h \
+  C:/ProgramData/MATLAB/SupportPackages/R2024a/mingw64/x86_64-w64-mingw32/include/corecrt.h \
+  C:/ProgramData/MATLAB/SupportPackages/R2024a/mingw64/x86_64-w64-mingw32/include/crtdefs.h \
+  C:/ProgramData/MATLAB/SupportPackages/R2024a/mingw64/x86_64-w64-mingw32/include/math.h \
+  C:/ProgramData/MATLAB/SupportPackages/R2024a/mingw64/x86_64-w64-mingw32/include/sdks/_mingw_ddk.h \
+  C:/ProgramData/MATLAB/SupportPackages/R2024a/mingw64/x86_64-w64-mingw32/include/vadefs.h
+
+CMakeFiles/ocp_racecar_lap_time_mpc.dir/racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_e_fun_jac_hess.c.obj: racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_e_fun_jac_hess.c \
+  C:/ProgramData/MATLAB/SupportPackages/R2024a/mingw64/x86_64-w64-mingw32/include/_mingw.h \
+  C:/ProgramData/MATLAB/SupportPackages/R2024a/mingw64/x86_64-w64-mingw32/include/_mingw_mac.h \
+  C:/ProgramData/MATLAB/SupportPackages/R2024a/mingw64/x86_64-w64-mingw32/include/_mingw_secapi.h \
+  C:/ProgramData/MATLAB/SupportPackages/R2024a/mingw64/x86_64-w64-mingw32/include/corecrt.h \
+  C:/ProgramData/MATLAB/SupportPackages/R2024a/mingw64/x86_64-w64-mingw32/include/crtdefs.h \
+  C:/ProgramData/MATLAB/SupportPackages/R2024a/mingw64/x86_64-w64-mingw32/include/math.h \
+  C:/ProgramData/MATLAB/SupportPackages/R2024a/mingw64/x86_64-w64-mingw32/include/sdks/_mingw_ddk.h \
+  C:/ProgramData/MATLAB/SupportPackages/R2024a/mingw64/x86_64-w64-mingw32/include/vadefs.h
+
+CMakeFiles/ocp_racecar_lap_time_mpc.dir/racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_fun.c.obj: racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_fun.c \
+  C:/ProgramData/MATLAB/SupportPackages/R2024a/mingw64/x86_64-w64-mingw32/include/_mingw.h \
+  C:/ProgramData/MATLAB/SupportPackages/R2024a/mingw64/x86_64-w64-mingw32/include/_mingw_mac.h \
+  C:/ProgramData/MATLAB/SupportPackages/R2024a/mingw64/x86_64-w64-mingw32/include/_mingw_secapi.h \
+  C:/ProgramData/MATLAB/SupportPackages/R2024a/mingw64/x86_64-w64-mingw32/include/corecrt.h \
+  C:/ProgramData/MATLAB/SupportPackages/R2024a/mingw64/x86_64-w64-mingw32/include/crtdefs.h \
+  C:/ProgramData/MATLAB/SupportPackages/R2024a/mingw64/x86_64-w64-mingw32/include/math.h \
+  C:/ProgramData/MATLAB/SupportPackages/R2024a/mingw64/x86_64-w64-mingw32/include/sdks/_mingw_ddk.h \
+  C:/ProgramData/MATLAB/SupportPackages/R2024a/mingw64/x86_64-w64-mingw32/include/vadefs.h
+
+CMakeFiles/ocp_racecar_lap_time_mpc.dir/racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_fun_jac.c.obj: racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_fun_jac.c \
+  C:/ProgramData/MATLAB/SupportPackages/R2024a/mingw64/x86_64-w64-mingw32/include/_mingw.h \
+  C:/ProgramData/MATLAB/SupportPackages/R2024a/mingw64/x86_64-w64-mingw32/include/_mingw_mac.h \
+  C:/ProgramData/MATLAB/SupportPackages/R2024a/mingw64/x86_64-w64-mingw32/include/_mingw_secapi.h \
+  C:/ProgramData/MATLAB/SupportPackages/R2024a/mingw64/x86_64-w64-mingw32/include/corecrt.h \
+  C:/ProgramData/MATLAB/SupportPackages/R2024a/mingw64/x86_64-w64-mingw32/include/crtdefs.h \
+  C:/ProgramData/MATLAB/SupportPackages/R2024a/mingw64/x86_64-w64-mingw32/include/math.h \
+  C:/ProgramData/MATLAB/SupportPackages/R2024a/mingw64/x86_64-w64-mingw32/include/sdks/_mingw_ddk.h \
+  C:/ProgramData/MATLAB/SupportPackages/R2024a/mingw64/x86_64-w64-mingw32/include/vadefs.h
+
+CMakeFiles/ocp_racecar_lap_time_mpc.dir/racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_fun_jac_hess.c.obj: racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_fun_jac_hess.c \
+  C:/ProgramData/MATLAB/SupportPackages/R2024a/mingw64/x86_64-w64-mingw32/include/_mingw.h \
+  C:/ProgramData/MATLAB/SupportPackages/R2024a/mingw64/x86_64-w64-mingw32/include/_mingw_mac.h \
+  C:/ProgramData/MATLAB/SupportPackages/R2024a/mingw64/x86_64-w64-mingw32/include/_mingw_secapi.h \
+  C:/ProgramData/MATLAB/SupportPackages/R2024a/mingw64/x86_64-w64-mingw32/include/corecrt.h \
+  C:/ProgramData/MATLAB/SupportPackages/R2024a/mingw64/x86_64-w64-mingw32/include/crtdefs.h \
+  C:/ProgramData/MATLAB/SupportPackages/R2024a/mingw64/x86_64-w64-mingw32/include/math.h \
+  C:/ProgramData/MATLAB/SupportPackages/R2024a/mingw64/x86_64-w64-mingw32/include/sdks/_mingw_ddk.h \
+  C:/ProgramData/MATLAB/SupportPackages/R2024a/mingw64/x86_64-w64-mingw32/include/vadefs.h
 
 
 C:/ProgramData/MATLAB/SupportPackages/R2024a/mingw64/x86_64-w64-mingw32/include/mmeapi.h:
@@ -529,7 +620,11 @@ C:/ProgramData/MATLAB/SupportPackages/R2024a/mingw64/lib/gcc/x86_64-w64-mingw32/
 
 C:/ProgramData/MATLAB/SupportPackages/R2024a/mingw64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/stddef.h:
 
+racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_0_fun_jac.c:
+
 C:/ProgramData/MATLAB/SupportPackages/R2024a/mingw64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/syslimits.h:
+
+racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_e_fun.c:
 
 C:/ProgramData/MATLAB/SupportPackages/R2024a/mingw64/x86_64-w64-mingw32/include/joystickapi.h:
 
@@ -606,6 +701,8 @@ C:/ProgramData/MATLAB/SupportPackages/R2024a/mingw64/x86_64-w64-mingw32/include/
 C:/ProgramData/MATLAB/SupportPackages/R2024a/mingw64/x86_64-w64-mingw32/include/commdlg.h:
 
 C:/ProgramData/MATLAB/SupportPackages/R2024a/mingw64/x86_64-w64-mingw32/include/corecrt.h:
+
+racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_0_fun.c:
 
 C:/ProgramData/MATLAB/SupportPackages/R2024a/mingw64/x86_64-w64-mingw32/include/corecrt_stdio_config.h:
 
@@ -795,6 +892,8 @@ C:/ProgramData/MATLAB/SupportPackages/R2024a/mingw64/x86_64-w64-mingw32/include/
 
 C:/ProgramData/MATLAB/SupportPackages/R2024a/mingw64/x86_64-w64-mingw32/include/sec_api/string_s.h:
 
+racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_fun.c:
+
 C:/ProgramData/MATLAB/SupportPackages/R2024a/mingw64/x86_64-w64-mingw32/include/securityappcontainer.h:
 
 C:/ProgramData/MATLAB/SupportPackages/R2024a/mingw64/x86_64-w64-mingw32/include/servprov.h:
@@ -818,6 +917,8 @@ C:/ProgramData/MATLAB/SupportPackages/R2024a/mingw64/x86_64-w64-mingw32/include/
 C:/ProgramData/MATLAB/SupportPackages/R2024a/mingw64/x86_64-w64-mingw32/include/threadpoollegacyapiset.h:
 
 C:/ProgramData/MATLAB/SupportPackages/R2024a/mingw64/x86_64-w64-mingw32/include/tvout.h:
+
+racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_e_fun_jac_hess.c:
 
 C:/ProgramData/MATLAB/SupportPackages/R2024a/mingw64/x86_64-w64-mingw32/include/unknwn.h:
 
@@ -889,6 +990,8 @@ C:/Users/rayyu/acados/include/acados/sim/sim_irk_integrator.h:
 
 C:/Users/rayyu/acados/include/acados/sim/sim_lifted_irk_integrator.h:
 
+racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_fun_jac_hess.c:
+
 C:/Users/rayyu/acados/include/acados/utils/external_function_generic.h:
 
 C:/Users/rayyu/acados/include/acados/utils/timing.h:
@@ -907,4 +1010,14 @@ C:/Users/rayyu/acados/include/hpipm/include/hpipm_d_ocp_qp_dim.h:
 
 C:/Users/rayyu/acados/include/hpipm/include/hpipm_d_ocp_qp_res.h:
 
+racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost.h:
+
 racecar_lap_time_mpc_model/racecar_lap_time_mpc_model.h:
+
+C:/ProgramData/MATLAB/SupportPackages/R2024a/mingw64/x86_64-w64-mingw32/include/math.h:
+
+racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_0_fun_jac_hess.c:
+
+racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_e_fun_jac.c:
+
+racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_fun_jac.c:

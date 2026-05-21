@@ -80,6 +80,15 @@ add_library(${MODEL_OBJ} OBJECT ${MODEL_SRC} )
 if(${BUILD_ACADOS_SOLVER_LIB} OR ${BUILD_ACADOS_OCP_SOLVER_LIB} OR ${BUILD_ACADOS_OCP_SOLVER_STATIC_LIB} OR ${BUILD_EXAMPLE})
     set(OCP_SRC
 
+        racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_0_fun.c
+        racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_0_fun_jac.c
+        racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_0_fun_jac_hess.c
+        racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_fun.c
+        racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_fun_jac.c
+        racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_fun_jac_hess.c
+        racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_e_fun.c
+        racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_e_fun_jac.c
+        racecar_lap_time_mpc_cost/racecar_lap_time_mpc_cost_ext_cost_e_fun_jac_hess.c
         acados_solver_racecar_lap_time_mpc.c
     )
     add_library(${OCP_OBJ} OBJECT ${OCP_SRC})
@@ -97,8 +106,8 @@ set(EXTERNAL_DIR)
 set(EXTERNAL_LIB)
 
 # set some search paths for preprocessor and linker
-set(ACADOS_INCLUDE_PATH C:/Users/rayyu/acados/examples/acados_matlab_octave/../../include CACHE PATH "Define the path which contains the include directory for acados.")
-set(ACADOS_LIB_PATH C:/Users/rayyu/acados/examples/acados_matlab_octave/../../lib CACHE PATH "Define the path which contains the lib directory for acados.")
+set(ACADOS_INCLUDE_PATH C:/Users/rayyu/acados/interfaces/acados_matlab_octave/../../include CACHE PATH "Define the path which contains the include directory for acados.")
+set(ACADOS_LIB_PATH C:/Users/rayyu/acados/interfaces/acados_matlab_octave/../../lib CACHE PATH "Define the path which contains the lib directory for acados.")
 
 # c-compiler flags for debugging
 set(CMAKE_C_FLAGS_DEBUG "-O0 -ggdb")

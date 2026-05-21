@@ -1,6 +1,5 @@
 function [x, y] = plotTrackProjection(simX, filename)
 
-    % Extract your model states
     s        = simX(:,1);    % progress
     ye       = simX(:,5);    % lateral error
     theta_e  = simX(:,6);    % heading error

@@ -34,6 +34,7 @@ extern "C" {
 #define casadi_s1 CASADI_PREFIX(s1)
 #define casadi_s2 CASADI_PREFIX(s2)
 #define casadi_s3 CASADI_PREFIX(s3)
+#define casadi_sq CASADI_PREFIX(sq)
 
 /* Symbol visibility in DLLs */
 #ifndef CASADI_SYMBOL_EXPORT
@@ -50,72 +51,64 @@ extern "C" {
   #endif
 #endif
 
-static const casadi_int casadi_s0[3] = {7, 1, 1};
-static const casadi_int casadi_s1[3] = {3, 1, 1};
-static const casadi_int casadi_s2[3] = {1, 1, 1};
-static const casadi_int casadi_s3[17] = 
-  {7, 7, 0, 1, 2, 3, 4, 5,
-  6, 7, 0, 1, 2, 3, 4, 5,
-  6};
+casadi_real casadi_sq(casadi_real x) { return x*x;}
 
-/* racecar_lap_time_mpc_cost_ext_cost_e_fun_jac_hess:(i0[7],i1[3])->(o0,o1[7],o2[7x7,7nz]) */
+static const casadi_int casadi_s0[3] = {7, 1, 1};
+static const casadi_int casadi_s1[3] = {1, 1, 1};
+static const casadi_int casadi_s2[8] = {7, 1, 0, 4, 1, 4, 5, 6};
+static const casadi_int casadi_s3[14] = 
+  {7, 7, 0, 0, 1, 1, 1, 2,
+  3, 4, 1, 4, 5, 6};
+
+/* racecar_lap_time_mpc_cost_ext_cost_e_fun_jac_hess:(i0[7],i1[7])->(o0,o1[7x1,4nz],o2[7x7,4nz]) */
 static int casadi_f0(const casadi_real** arg, casadi_real** res, casadi_int* iw, casadi_real* w, int mem) {
   casadi_real a0, a1, a2, a3, a4, a5, a6, a7, a8;
-  a0=1.0000000000000001e-01;
-  a1=arg[0]? arg[0][0] : 0;
-  a2=(a0*a1);
-  a1=(a2*a1);
-  a3=2.;
-  a4=arg[0]? arg[0][1] : 0;
-  a3=(a3*a4);
-  a4=(a3*a4);
-  a1=(a1+a4);
-  a4=1.0000000000000000e-02;
-  a5=arg[0]? arg[0][2] : 0;
-  a6=(a4*a5);
-  a5=(a6*a5);
-  a1=(a1+a5);
-  a5=arg[0]? arg[0][3] : 0;
-  a7=(a4*a5);
-  a5=(a7*a5);
-  a1=(a1+a5);
-  a5=arg[0]? arg[0][4] : 0;
-  a8=(a0*a5);
-  a5=(a8*a5);
-  a1=(a1+a5);
+  a0=5.;
+  a1=arg[0]? arg[0][1] : 0;
+  a2=arg[1]? arg[1][3] : 0;
+  a1=(a1-a2);
+  a2=casadi_sq(a1);
+  a2=(a0*a2);
+  a3=5.0000000000000000e-01;
+  a4=arg[0]? arg[0][4] : 0;
+  a5=arg[1]? arg[1][4] : 0;
+  a4=(a4-a5);
+  a5=casadi_sq(a4);
+  a5=(a3*a5);
+  a2=(a2+a5);
   a5=arg[0]? arg[0][5] : 0;
-  a0=(a0*a5);
-  a5=(a0*a5);
-  a1=(a1+a5);
-  a5=arg[0]? arg[0][6] : 0;
-  a4=(a4*a5);
-  a5=(a4*a5);
-  a1=(a1+a5);
-  if (res[0]!=0) res[0][0]=a1;
-  a2=(a2+a2);
-  if (res[1]!=0) res[1][0]=a2;
-  a3=(a3+a3);
-  if (res[1]!=0) res[1][1]=a3;
-  a6=(a6+a6);
-  if (res[1]!=0) res[1][2]=a6;
-  a7=(a7+a7);
-  if (res[1]!=0) res[1][3]=a7;
-  a8=(a8+a8);
-  if (res[1]!=0) res[1][4]=a8;
-  a0=(a0+a0);
-  if (res[1]!=0) res[1][5]=a0;
+  a6=arg[1]? arg[1][5] : 0;
+  a5=(a5-a6);
+  a6=casadi_sq(a5);
+  a6=(a3*a6);
+  a2=(a2+a6);
+  a6=1.0000000000000001e-01;
+  a7=arg[0]? arg[0][6] : 0;
+  a8=arg[1]? arg[1][6] : 0;
+  a7=(a7-a8);
+  a8=casadi_sq(a7);
+  a8=(a6*a8);
+  a2=(a2+a8);
+  if (res[0]!=0) res[0][0]=a2;
+  a1=(a1+a1);
+  a0=(a0*a1);
+  if (res[1]!=0) res[1][0]=a0;
   a4=(a4+a4);
-  if (res[1]!=0) res[1][6]=a4;
-  a4=2.0000000000000001e-01;
-  if (res[2]!=0) res[2][0]=a4;
-  a0=4.;
-  if (res[2]!=0) res[2][1]=a0;
-  a0=2.0000000000000000e-02;
-  if (res[2]!=0) res[2][2]=a0;
-  if (res[2]!=0) res[2][3]=a0;
-  if (res[2]!=0) res[2][4]=a4;
-  if (res[2]!=0) res[2][5]=a4;
-  if (res[2]!=0) res[2][6]=a0;
+  a4=(a3*a4);
+  if (res[1]!=0) res[1][1]=a4;
+  a5=(a5+a5);
+  a3=(a3*a5);
+  if (res[1]!=0) res[1][2]=a3;
+  a7=(a7+a7);
+  a6=(a6*a7);
+  if (res[1]!=0) res[1][3]=a6;
+  a6=10.;
+  if (res[2]!=0) res[2][0]=a6;
+  a6=1.;
+  if (res[2]!=0) res[2][1]=a6;
+  if (res[2]!=0) res[2][2]=a6;
+  a6=2.0000000000000001e-01;
+  if (res[2]!=0) res[2][3]=a6;
   return 0;
 }
 
@@ -177,15 +170,15 @@ CASADI_SYMBOL_EXPORT const char* racecar_lap_time_mpc_cost_ext_cost_e_fun_jac_he
 CASADI_SYMBOL_EXPORT const casadi_int* racecar_lap_time_mpc_cost_ext_cost_e_fun_jac_hess_sparsity_in(casadi_int i) {
   switch (i) {
     case 0: return casadi_s0;
-    case 1: return casadi_s1;
+    case 1: return casadi_s0;
     default: return 0;
   }
 }
 
 CASADI_SYMBOL_EXPORT const casadi_int* racecar_lap_time_mpc_cost_ext_cost_e_fun_jac_hess_sparsity_out(casadi_int i) {
   switch (i) {
-    case 0: return casadi_s2;
-    case 1: return casadi_s0;
+    case 0: return casadi_s1;
+    case 1: return casadi_s2;
     case 2: return casadi_s3;
     default: return 0;
   }
