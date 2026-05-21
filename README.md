@@ -298,24 +298,54 @@ Generates optimal reference velocity based on track curvature.
 
 The simulation generates comprehensive results visualizing the MPC controller performance across multiple dimensions:
 
-### Result Visualizations
+### Vehicle Dynamics Model
 
-The `results/` directory contains the following simulation outputs:
+![Bicycle Model Diagram](results/bicycle_model.png)
+*Nonlinear bicycle model showing vehicle states, tire forces, and coordinate systems*
 
-#### Trajectory & Navigation
-| Figure | Description |
-|--------|-------------|
-| **path.jpg** | 2D track visualization showing the racing line, vehicle trajectory with acceleration heatmap, and constraint satisfaction |
-| **bicycle_model.png** | Vehicle dynamics diagram showing the nonlinear bicycle model with tire forces and coordinate system |
+---
 
-#### Performance Metrics
-| Figure | Description |
-|--------|-------------|
-| **velocity.jpg** | Longitudinal velocity profile over time, showing acceleration/braking sequences and optimal speed management |
-| **acceleration.jpg** | Commanded longitudinal acceleration, demonstrating smooth control inputs from the MPC solver |
-| **track_error.jpg** | Lateral tracking error (ye) relative to the reference racing line, confirming constraint satisfaction |
-| **input.jpg** | Steering angle commands (δ), showing smooth steering transitions during cornering maneuvers |
-| **soc.jpg** | Battery state-of-charge (SoC) dynamics during the lap, illustrating energy-aware control |
+### Trajectory & Path Tracking
+
+![Racing Line and Track Path](results/path.jpg)
+*2D track visualization with optimal racing line, vehicle trajectory, and acceleration heatmap showing high-speed zones*
+
+---
+
+### Velocity Profile
+
+![Longitudinal Velocity](results/velocity.jpg)
+*Velocity profile over time demonstrating acceleration and braking sequences along the track*
+
+---
+
+### Lateral Tracking Error
+
+![Track Error](results/track_error.jpg)
+*Lateral position error (ye) relative to the reference racing line, confirming constraint satisfaction*
+
+---
+
+### Acceleration Commands
+
+![Acceleration Input](results/acceleration.jpg)
+*Commanded longitudinal acceleration from the MPC solver, showing smooth control transitions*
+
+---
+
+### Steering Angle Commands
+
+![Steering Input](results/input.jpg)
+*Steering angle commands during the lap, demonstrating smooth steering transitions during cornering*
+
+---
+
+### Battery State of Charge
+
+![Battery SoC](results/soc.jpg)
+*Battery state-of-charge dynamics during lap execution, illustrating energy-aware control management*
+
+---
 
 ### Key Results Summary
 
@@ -324,31 +354,6 @@ The `results/` directory contains the following simulation outputs:
 - **Energy Efficiency**: Battery management successfully tracks SoC while maintaining lap time performance
 - **Solver Performance**: ~5-20 ms computation time per control step enables real-time execution
 - **Track Completion**: Full lap circuit closure with consistent reference tracking
-
----
-
-## Repository Statistics
-
-This project integrates multiple programming paradigms optimized for the Model Predictive Control workflow:
-
-### Language Composition
-
-```
-C              50.3%  │████████████████████████████████░░░░░░░░│ (Core ACADOS solver & generated code)
-Makefile       30.5%  │███████████████░░░░░░░░░░░░░░░░░░░░░░░░│ (Build system & compilation)
-MATLAB          9.4%  │████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░│ (Control logic & simulations)
-CMake           5.6%  │██░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░│ (Project configuration)
-C++             4.1%  │██░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░│ (Optional utilities)
-TypeScript      0.1%  │░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░│ (Documentation/tooling)
-```
-
-**Rationale**:
-- **C (50.3%)**: ACADOS auto-generates optimized C code for the nonlinear optimal control solver, ensuring real-time performance
-- **Makefile (30.5%)**: Traditional build system for compiling C code with proper dependencies and linking
-- **MATLAB (9.4%)**: High-level simulation environment for MPC problem formulation, visualization, and algorithm development
-- **CMake (5.6%)**: Modern cross-platform build configuration for ACADOS and integrated systems
-- **C++ (4.1%)**: Optional performance-critical utilities and extensions
-- **TypeScript (0.1%)**: Minimal documentation or web-based tools
 
 ---
 
